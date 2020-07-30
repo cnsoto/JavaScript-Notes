@@ -11,7 +11,21 @@ What it is
 The reason for this behavior is the close relationship between the object "THIS" and the 'execution context in JavaScript': 
 "If the execution context changes also the value of 'THIS' change". The 'execution context' is decided at 'execution time' taking into 
 consideration the owner object of the function being call (although the object reference can change according with the JavaScript rules, for example:
-a function being call inside an object's method). 
+a function being call inside an object's method
+JS Code
+
+let person = {
+  name:"Carlos",
+  talk: function(){
+    let text= 'Mi name is';
+    function innerfunction(){
+      console.log(`${text} + ${this.name}`);
+    }
+    innerfunction();
+  }
+}
+
+). 
 
 This is the object who "this" store a reference that defines the execution reference in the actual code line JavaScript program.
 
