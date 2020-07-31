@@ -1,15 +1,13 @@
 Introduction
 
-JavaScript is a programming language that uses lexical scope with function scope to determine the values of their variables.
-The exception to the rule is the "this" keyword, which is a variable whos value seems to change strangely and we cannot control it.
-To understand this behavior let's get to know it.
+JavaScript is a programming language that uses lexical scope with function scope to define the variables values,
+except for the **THIS** keyword, which is a variable whos value seems to change strangely and that we cannot control.
 
-The object "this" has some kind of dymanic scope to define it's value, which change on execution time to values that we didn't 
-defined in our code.
+The reason to this behavior is that the object **THIS** has some kind of **dynamic scope** to define it's value, 
+that's why on execution time **THIS** changes to values that we didn't defined in our code.
 
-What it is
-The reason for this behavior is the close relationship between the object "THIS" and the 'execution context in JavaScript': 
-"If the execution context changes also the value of 'THIS' change". The 'execution context' is decided at 'execution time' taking into 
+The changes of **THIS** values are do to the close relationship between the **THIS** object and the **execution context** in JavaScript: 
+"If the execution context changes also the **THIS** value". The **execution context** is decided at **execution time** taking into 
 consideration the owner object of the function being call (although the object reference can change according with the JavaScript rules, for example:
 a function being call inside an object's method).
 ----------------------------------
@@ -28,7 +26,7 @@ let person = {
 ----------------------------------
 
 This is the object who "this" store a reference that defines the execution reference in the actual code line JavaScript program. During the
-execution time of a JavaScript program the execution context changes. 
+**execution time** of a JavaScript program the execution context changes. 
 
 How it gets its value
 Since a function can be call diferent ways (implicit, explicit, event listenes, others.), and also the same function can have diferent execution context, 
