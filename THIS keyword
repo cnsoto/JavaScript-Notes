@@ -1,7 +1,7 @@
 Introduction
 
 JavaScript is a programming language that uses lexical scope with function scope to determine the values of their variables.
-The exception to the rule es the "this" keyword, which is a variable whos value seems to change strangely and we cannot control it.
+The exception to the rule is the "this" keyword, which is a variable whos value seems to change strangely and we cannot control it.
 To understand this behavior let's get to know it.
 
 The object "this" has some kind of dymanic scope to define it's value, which change on execution time to values that we didn't 
