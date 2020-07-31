@@ -7,10 +7,12 @@ The reason to this behavior is that the object **THIS** has some kind of **dynam
 that's why on execution time **THIS** changes to values that we didn't defined in our code.
 
 The changes to **THIS** values are due to the close relationship between the **THIS** object and the **execution context** in JavaScript: 
-"If the execution context changes also the **THIS** value". During the **execution time** of an actual JavaScript code line program the 
+"If the execution context changes also the **THIS** value". During the **execution time** of one code line of a JavaScript program, the 
 **execution context** changes taking into consideration the owner object of the function being call and **this** stores a reference to 
-this owner object (although this owner object reference can change according with the JavaScript rules, for example: 
-a function being call inside an object's method).
+this owner object.
+
+It's important to understand how the value of **THIS** changes because sometimes it may seem that has one value but it changes to another, 
+for example: a function being call inside an object's method.
 ----------------------------------
 JS Code
 
