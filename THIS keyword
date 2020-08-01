@@ -8,8 +8,8 @@ that's why on execution time **THIS** changes to values that we didn't defined i
 
 The changes to **THIS** values are due to the close relationship between the **THIS** object and the **execution context** in JavaScript: 
 "If the execution context changes also the **THIS** value". During the **execution time** of one code line of a JavaScript program, the 
-**execution context** changes taking into consideration the owner object of the function being call and **this** stores a reference to 
-this owner object.
+**execution context**(enviroment or scope in which a line of code is being executed) changes taking into consideration the owner object 
+of the function being call and **this** stores a reference to this owner object.
 
 It's important to understand how the value of **THIS** changes because sometimes it may seem that has one value but it changes to another, 
 for example: a function being call inside an object's method.
@@ -58,13 +58,33 @@ boo.call(roles)// Uncaught TypeError: Cannot convert a Symbol value to a number
 foo.call(roles)// "object"
 buzz.call(roles)// Symbol {Symbol(rol)}
 too.call(roles)// "object 13"
-
 ---------------------------
-
 Now that we know the **THIS** object it is important to understand how it is bind to the scope:
+ -Default(window)
+ -new
+ -Lexical
+ -implicit
+ -explicit
+               
 
-this binding { -implicit
-               -explicit
-               -new
-               -Default(window)
-               -Lexical
+
+               
+              
+
+-----------------------------------------
+JS
+const fn = function() {
+  return this;
+};
+
+const obj1 = { fn }; //ES6 Feature
+const obj2 = { fn }; //ES6 Feature
+
+obj1.fn() === obj1; // true
+obj1.fn() === obj2; // false
+
+obj2.fn() === obj1; // false
+obj2.fn() === obj2; // true
+----------------------------------------------
+Functions are variables in JavaScript. 
+--------------------------------------------------
