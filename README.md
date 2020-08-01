@@ -2,6 +2,7 @@
 These are my notes in my learning JavaScript path.
 
 References:
+https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8
 https://medium.com/@osmanakar_65575/javascript-lexical-and-dynamic-scoping-72c17e4476dd
 https://spin.atomicobject.com/2014/10/20/javascript-scope-closures/
 https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/this
