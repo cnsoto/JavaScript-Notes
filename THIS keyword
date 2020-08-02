@@ -1,4 +1,4 @@
-#INTRODUCCION
+# INTRODUCCION
 
 JavaScript is a programming language that uses lexical scope with function scope to define the variables values,
 except for the **THIS** keyword, which is a variable whos value seems to change strangely and that we cannot control.
