@@ -66,11 +66,13 @@ Now that we know the **THIS** object it is important to understand how it is bin
  -implicit
  -explicit
                
-# **THIS** in Global Context
+# **THIS** Default binding
 
-               
-              
+# **THIS** new binding
 
+# **THIS** Lexical Context binding
+           
+# **THIS** Implicit binding           
 ----
 JS
 const fn = function() {
@@ -88,3 +90,5 @@ obj2.fn() === obj2; // true
 ----
 Functions are variables in JavaScript. 
 ----
+
+# **THIS** Explicit binding
