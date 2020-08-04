@@ -121,7 +121,30 @@ dad.displayName()//Name: Noel Soto
 mom===dad// false
 ----
 # **THIS** Lexical Context binding
-In regular functions every new function defined has its own **THIS** keyword value. Arrow functions on the other hand don't have their own **THIS** keyword.
+In regular functions every new function defined has its own **THIS** keyword value, which owner is the global object (window)
+----
+JS Code
+
+var myApp = function(){
+  var name = 'World'
+  var sayHello = function(){
+    console.log('Hello, ' + this.name)
+  }
+  sayHello()
+}
+myApp()// Hello
+name = 'Joceline'
+var myApp2 = function(){
+  var name = 'Carlos Noel'
+  var sayHello = function(){
+    console.log('Hello, ' + this.name)
+  }
+  sayHello();
+}
+myApp2()// Hello Joceline
+----
+Arrow functions on the other hand don't have their own **THIS** keyword.
+/* **THIS** inside a function
 
 # **THIS** Implicit binding           
 In this case we see the method invocation pattern. The **THIS** keyword is really useful when use for object and is good practice to set the strict mode
@@ -187,6 +210,26 @@ let noel = {
 }
 noel.lastnames = tellLastName;
 noel.lastnames()// Soto Calderon
+/*Function returning object with **THIS** in a method */
+const Person = function(name,age,mother){
+  return{
+    name:name,
+    age:age,
+    talk: function(){
+      console.log(this.name)
+    },
+    mother: {
+      name:mother,
+      talk: function(){
+        console.log(this.name)
+      }
+    }
+   }
+  };
+  let ana = Person('ana',25,'claire')
+  ana.talk()// ana
+  ana.mother.talk()// claire
+}
 ----
 
 # **THIS** Explicit binding
