@@ -67,14 +67,68 @@ Now that we know the **THIS** object it is important to understand how it is bin
  -explicit
                
 # **THIS** Default binding
-
-# **THIS** new binding
-
-# **THIS** Lexical Context binding
-           
-# **THIS** Implicit binding           
+When a function is invoke as a functions **THIS**'s value refers to the **Global Object** (Window).
 ----
-JS
+JS Code
+
+function test(){
+  console.log(this === window)
+}
+console.log(this === window)// true
+test()// true
+----
+When belonging to the **global context** the **THIS** value can be change outside the function, their's no data encapsuling.
+----
+JS Code
+
+const TellAge = function(){
+  console.log(this.age)
+}
+TellAge()// undefined
+window.age = 22
+TellAge()// 22
+----
+For correcting this behavior the strict mode is use. A function which has **'use strict'** in their scope the value **THIS** will be **undefined** instead 
+of the **window** object.
+----
+JS Code
+
+const TellAge2 = function(){
+  'use strict'
+  console.log(this.age)
+}
+TellAge2()// undefined
+window.age = 22
+TellAge2()// Uncaught TypeError: Cannot read property 'age' of undefined at TellAge2
+----
+# **THIS** new binding
+The **NEW** keyword is use together with construction functions assigning it to a variable to create objects. In which **THIS** value is refeer 
+to the new created instance.
+----
+JS Code
+
+const Person = function(fn, ln){
+  this.first_name = fn;
+  this.last_name = ln;
+  this.displayName = function(){
+    console.log(`Name: ${this.first_name} ${this.last_name}`)
+  }
+}
+let mom = new Person("Joceline","Aguilar")
+let dad = new Person("Noel", "Soto")
+mom.displayName()//Name: Joceline Aguilar
+dad.displayName()//Name: Noel Soto 
+mom===dad// false
+----
+# **THIS** Lexical Context binding
+In regular functions every new function defined has its own **THIS** keyword value. Arrow functions on the other hand don't have their own **THIS** keyword.
+
+# **THIS** Implicit binding           
+In this case we see the method invocation pattern. The **THIS** keyword is really useful when use for object and is good practice to set the strict mode
+on functions which have it in their context.
+----
+JS Code
+
 const fn = function() {
   return this;
 };
@@ -87,8 +141,24 @@ obj1.fn() === obj2; // false
 
 obj2.fn() === obj1; // false
 obj2.fn() === obj2; // true
-----
-Functions are variables in JavaScript. 
+
+const foo = function(){
+  'use strict'
+  console.log(this === window)
+}
+
+let user = {
+  count: 10,
+  foo,
+  foo1: function(){
+    console.log(this === window)
+  }
+}
+
+user.foo()// false
+const fun1 = user.foo1;
+fun1()// true
+user.foo1()// false
 ----
 
 # **THIS** Explicit binding
