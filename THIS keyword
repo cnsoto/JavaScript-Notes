@@ -133,12 +133,11 @@ const fn = function() {
   return this;
 };
 
-const obj1 = { fn }; //ES6 Feature
-const obj2 = { fn }; //ES6 Feature
+const obj1 = { fn }; 
+const obj2 = { fn }; 
 
 obj1.fn() === obj1; // true
 obj1.fn() === obj2; // false
-
 obj2.fn() === obj1; // false
 obj2.fn() === obj2; // true
 
@@ -159,6 +158,35 @@ user.foo()// false
 const fun1 = user.foo1;
 fun1()// true
 user.foo1()// false
+/*Function receives an object as an argument and adds a method*/
+const tellName = function(obj){
+  obj.talk = function(){
+    console.log(this.name)
+  }
+}
+let matt = {
+  name:"Matt",
+  Age:22
+}
+let john = {
+  name:"John",
+  age:25
+}
+tellName(matt)
+tellName(john)
+matt.talk()// Matt
+john.talk()// John
+/*Function assigns a method after definition*/
+const tellLastName = function(){
+  return this.father_lastname +' '+ this.mother_lastname;
+}
+let noel = {
+  name:'Carlos Noel',
+  father_lastname:'Soto',
+  mother_lastname:'Calderon'
+}
+noel.lastnames = tellLastName;
+noel.lastnames()// Soto Calderon
 ----
 
 # **THIS** Explicit binding
