@@ -296,6 +296,55 @@ printName.bind(person2)()// Scarlett Johanson
 printName.bind(person1)()// Angelina Jolie
 ----
 /*Apply function*/
+In this method the first method let us defined the deference to **THIS**, and second parameter is an array passing the function's arguments.
+(Dispatcher pattern)
+----
+JS Code
 
+let person1 = {
+  name: 'Angelina',
+  lastName: 'Jolie',
+  birthDay: '04/06/1975',
+  lastMovie: 'The Tourist'
+}
+
+let person2 = {
+  name: 'Scarlett',
+  lastName: 'Johanson',
+  birthDay: '22/11/1984',
+  lastMovie: 'We bought a Zoo'
+}
+
+const printName = function(){
+  console.log(`${this.name} ${this.lastName}'s last movie was ${this.lastMovie}`)
+}
+
+const updatePerson = function(name, lastName, birthDay, lastMovie){
+  this.name = name;
+  this.lastName = lastName;
+  this.birthDay = birthDay;
+  this.lastMovie = lastMovie;
+}
+
+const dispatch = function(object, method, args){
+  method.apply(object, args)
+}
+
+dispatch(person1, printName);// 
+dispatch(person2, updatePerson, ['Scarlett','Johanson','22/11/1982','The Avengers'])// 
+dispatch(person2, printName);//
+----
 /*Bind function*/
+In this method the first parameter is for defining the reference to **THIS**, all other arguments are pass individually.
+----
+JS Code
 
+function Person(fn, ln){
+  this.first_name = fn;
+  this.last_name = ls;
+  this.displayName = function(){
+    console.log(`Name: ${this.first_name} ${this.last_name}`)
+  }
+}
+
+let person = new Person("")
