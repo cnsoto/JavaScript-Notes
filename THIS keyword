@@ -233,3 +233,69 @@ const Person = function(name,age,mother){
 ----
 
 # **THIS** Explicit binding
+Functions in JavaScript are a special type of Object and as all Objects it has methods: **call**, **apply** and **bind**. These functions set the
+function context in other words change the function owner and there for the **THIS** value.
+/*Call function*/
+In this method the arguments are pass individually and the first parameter define a reference to **THIS**
+----
+JS Code
+
+const talk = function(l1, l2, l3){
+  console.log(`My name is ${this.name} and I speak ${l1}, ${l2} and ${l3}`)
+}
+
+let barbie = {
+  name: 'Barbie',
+  edad: 27
+}
+
+let languages=['English','Spanish','French']
+
+talk.call(barbie, languages[0], language[1], language[2])
+
+const Person = function(fn, ln){
+  this.first_name = fn;
+  this.last_name = ln;
+  this.displayName = function(){
+    console.log(`Name: ${this.first_name} ${this.last_name}`)
+  }
+}
+
+let person = new Person("John", "Reed");
+let person2 = new Person("Paul", "Adams");
+person.displayName()// Name: John Reed
+person2.displayName()// Name: Paul Adams
+person2.displayName.call(person);// Name: John Reed
+
+function hello(thing){
+  console.log(`${this} says hello ${thing}`)
+}
+hello.call("Yehuda", "world")// Yehuda says hello world
+
+var person1 = {
+  name: 'Angelina',
+  lastName: 'Jolie',
+  birtDay: '04/06/1975',
+  lastMovie: 'The Tourist'
+}
+
+var person2 = {
+  name: 'Scarlett',
+  lastName: 'Johansson',
+  birthDay: '22/11/1984',
+  lastMovie: 'We bought a Zoo'
+}
+
+var printName = function(){
+  console.log(`${this.name} ${this.lastName}`)
+}
+
+printName.call(person1)// Angelina Jolie
+printName.call(person2)// Scarlett Johanson
+printName.bind(person2)()// Scarlett Johanson
+printName.bind(person1)()// Angelina Jolie
+----
+/*Apply function*/
+
+/*Bind function*/
+
