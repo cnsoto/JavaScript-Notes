@@ -1,17 +1,17 @@
 # INTRODUCTION
 
 JavaScript is a programming language that uses **lexical scope** with **function scope** to define the variables values,
-except for the **THIS** keyword, which is a variable whos value seems to change strangely and that we cannot control.
+except for the _THIS_ keyword, which is a variable whos value seems to change strangely and that we cannot control.
 
-The reason to this behavior is that the object **THIS** has some kind of **dynamic scope** to define it's value, 
-that's why on execution time **THIS** changes to values that we didn't defined in our code.
+The reason to this behavior is that the object _THIS_ has some kind of **dynamic scope** to define it's value, 
+that's why on execution time _THIS_ changes to values that we didn't defined in our code.
 
-The changes to **THIS** values are due to the close relationship between the **THIS** object and the **execution context** (_enviroment or 
+The changes to _THIS_ values are due to the close relationship between the _THIS_ object and the **execution context** (_enviroment or 
 scope in which a line of code is being executed_) in JavaScript. 
 During the **execution time** of one code line of a JavaScript program, the **execution context** changes taking into consideration the owner object 
-of the function being call and **THIS** stores a reference to this owner object.
+of the function being call and _THIS_ stores a reference to this owner object.
 
-It's important to understand how the value of **THIS** changes because sometimes it may seem that has one value but it changes to another, 
+It's important to understand how the value of _THIS_ changes because sometimes it may seem that has one value but it changes to another, 
 for example: a function being call inside an object's method.
 
 ----
@@ -26,24 +26,24 @@ for example: a function being call inside an object's method.
       innerfunction();
     }
   }
-  person.talk() //Output: Mi names is +
+  person.talk() // Mi names is +
 ```
 ----
 As mention before the execution context changes at execution time due to the function being call by it's owner object.
 Since a function can be call diferent ways (implicit, explicit, event listenes, others.), the same function can have diferent execution context, 
-whichs means a function can have diferents values for **THIS** keyword. 
+whichs means a function can have diferents values for _THIS_ keyword. 
 
-An easy way to know the value of **THIS** is to determine how the function that contains the **THIS** keyword was call at execution time. 
+An easy way to know the value of _THIS_ is to determine how the function that contains the _THIS_ keyword was call at execution time. 
 It helps to answer the question: Who call the function?
 
-In execution time who can call a function to execute are (posibles values of **THIS**): 
+In execution time who can call a function to execute are (posibles values of _THIS_): 
 - the **Global object** (window if we are working on a browser, global object on NodeJS).
 - objects (a define structure with methods and properties).
 - DOM elements.
 - primitives data types (string, boolean, number, bigint, undefined, symbol). 
 
 In JavaScript is not posible to alter how the lexical scope works, but it is possible to control the execution context in which we call our functions. 
-We can control and fixed the value of **THIS** with: **clousure**, **call**, **apply**, **bind** and **arrow functions**.
+We can control and fixed the value of _THIS_ with: **clousure**, **call**, **apply**, **bind** and **arrow functions**.
 
 ----
 ```
@@ -72,15 +72,15 @@ We can control and fixed the value of **THIS** with: **clousure**, **call**, **a
   too.call(roles)// "object 13"
 ```
 ----
-### Now that we know the **THIS** object it is important to understand how it is bind to the scope: :pushpin:
+### Now that we know the _THIS_ object it is important to understand how it is bind to the scope: :pushpin:
  - [Default(window)](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-default-binding)
  - [new keyword](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-new-binding)
  - [Lexical](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-lexical-context-binding)
  - [implicit](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-implicit-binding)
  - [explicit](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-explicit-binding)
                
-# **THIS** Default binding
-In the **Global Execution Context**, **THIS** refers to the **Global Object**, if we set **strict mode** on **THIS** value is undefined,
+# _THIS_ Default binding
+In the **Global Execution Context**, _THIS_ refers to the **Global Object**, if we set **strict mode** on _THIS_ value is undefined,
 however we can still refer to the **Global Object** via the global property **globalThis**.
 
 ----
@@ -95,7 +95,7 @@ however we can still refer to the **Global Object** via the global property **gl
   console.log(Global())
 ```
 ----
-The **THIS** value in the **global scope** refers to the **Global Object** (Window).
+The _THIS_ value in the **global scope** refers to the **Global Object** (Window).
 
 ----
 ```
@@ -116,7 +116,7 @@ The **THIS** value in the **global scope** refers to the **Global Object** (Wind
   */
 ```
 ----
-When a function is invoke as a functions **THIS**'s value refers to the **Global Object** (Window).
+When a function is invoke as a functions _THIS_'s value refers to the **Global Object** (Window).
 
 ----
 ```
@@ -127,7 +127,7 @@ When a function is invoke as a functions **THIS**'s value refers to the **Global
   test()// true
 ``` 
 ----
-When belonging to the **global context** the **THIS** value can be change outside the function, their's no data encapsuling.
+When belonging to the **global context** the _THIS_ value can be change outside the function, their's no data encapsuling.
 
 ----
 ```
@@ -139,7 +139,7 @@ When belonging to the **global context** the **THIS** value can be change outsid
   TellAge()// 22
 ```
 ----
-For correcting this behavior the strict mode is use. A function which has **'use strict'** in their scope the value **THIS** will be **undefined** instead 
+For correcting this behavior the strict mode is use. A function which has **'use strict'** in their scope the value _THIS_ will be **undefined** instead 
 of the **window** object.
 
 ----
@@ -154,8 +154,8 @@ of the **window** object.
 ```
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
-# **THIS** new binding
-The **NEW** keyword is use together with **construction functions** (a function use to create object) assigning it to a variable to create objects. In which **THIS** value is 
+# _THIS_ new binding
+The **NEW** keyword is use together with **construction functions** (a function use to create object) assigning it to a variable to create objects. In which _THIS_ value is 
 refers to the new created instance.
 
 ----
@@ -248,7 +248,7 @@ A better approch to handdle this data protection integrety issue one solution wo
 ```  
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
-# **THIS** Lexical Context binding
+# _THIS_ Lexical Context binding
 
 ----
 ```  
@@ -264,8 +264,8 @@ A better approch to handdle this data protection integrety issue one solution wo
   console.log(f1()===f2())// false
 ```  
 ----
-In regular functions every new function defined has its own **THIS** keyword value, which owner is the global object (window), except if the
-function uses "strict mode" in which case is set to "undefined". The **THIS** keyword is not very useful in functions, where they really shine
+In regular functions every new function defined has its own _THIS_ keyword value, which owner is the global object (window), except if the
+function uses "strict mode" in which case is set to "undefined". The _THIS_ keyword is not very useful in functions, where they really shine
 is when is use with objects.
 
 ----
@@ -307,7 +307,7 @@ is when is use with objects.
   */
 ```  
 ----
-Using **THIS** in a function with 'strict mode'
+Using _THIS_ in a function with 'strict mode'
 
 ----
 ```
@@ -326,10 +326,10 @@ Using **THIS** in a function with 'strict mode'
   */
 ```  
 ----
-Using **THIS** in an inner function
-Each function possess its own relation with **THIS** even inner functions. And by default **THIS**'s value is the "Global Object".
-In the next example, we bind the **THIS** value with the **CALL** function but then its change to "undefined" (because the "strict mode" is "ON")
-in the inner function. This is an unwanted behavior. (When a function changes the **THIS** value is know as a function loosing its context).
+Using _THIS_ in an inner function
+Each function possess its own relation with _THIS_ even inner functions. And by default _THIS_'s value is the "Global Object".
+In the next example, we bind the _THIS_ value with the **CALL** function but then its change to "undefined" (because the "strict mode" is "ON")
+in the inner function. This is an unwanted behavior. (When a function changes the _THIS_ value is know as a function loosing its context).
 
 ----
 ```
@@ -358,7 +358,7 @@ For the example above where are three solutions:
   -B) call, apply, and bind
   -C) arrow functions
 
-A) **THIS** with closures is not a very good solution
+A) _THIS_ with closures is not a very good solution
 
 ----
 ```
@@ -409,8 +409,8 @@ B) **CALL**, **APPLY** and **BIND** approch
 ```  
 ----
 C) Arrow functions
-Unlike regular functions, **arrow functions** don't have their own **THIS** keyword, it uses the **OUTTER SCOPE**'s **THIS** value. In the next
-example the "innefunction" takes the "outterfunction"'s **THIS** which was set with the **CALL** function.
+Unlike regular functions, **arrow functions** don't have their own _THIS_ keyword, it uses the **OUTTER SCOPE**'s _THIS_ value. In the next
+example the "innefunction" takes the "outterfunction"'s _THIS_ which was set with the **CALL** function.
 
 ----
 ```
@@ -461,8 +461,8 @@ Example 3
 ```  
 ----
 In the above example we see that for invoking the "addName" method from the "NameGenerator" class inside a constructor function we use
-the **THIS** keyword, due to the method being added to the class. This means that **THIS** is referring to the class. One way to change 
-**THIS** value is via 'Event Listener'.
+the _THIS_ keyword, due to the method being added to the class. This means that _THIS_ is referring to the class. One way to change 
+_THIS_ value is via 'Event Listener'.
 
 ----
 ```  
@@ -490,9 +490,9 @@ the **THIS** keyword, due to the method being added to the class. This means tha
   const test = new NameGenerator();//Cannot read property 'undefined' of undefined
 ```  
 ----
-In the example above when we press the "button" it show us the "Cannot read ..." message because the "button" modifies the **THIS** value.
-In the class's constructor lexical scope **THIS** refers to the class an that's why it was able to find the "addName" method, but when the 
-button is press **THIS** value changes because the one "who call the function" was the button not the object instance of the class 
+In the example above when we press the "button" it show us the "Cannot read ..." message because the "button" modifies the _THIS_ value.
+In the class's constructor lexical scope _THIS_ refers to the class an that's why it was able to find the "addName" method, but when the 
+button is press _THIS_ value changes because the one "who call the function" was the button not the object instance of the class 
 'NameGenerator'. And the button doesn't has the properties "name" and "counter". We can correct this error using the **BIND** function.
 
 ----
@@ -522,7 +522,7 @@ button is press **THIS** value changes because the one "who call the function" w
 ```  
 ----
 Example 4 
-In the next example use arrow function to keep the lexical context of **THIS**.
+In the next example use arrow function to keep the lexical context of _THIS_.
 
 ----
 ```  
@@ -551,8 +551,8 @@ In the next example use arrow function to keep the lexical context of **THIS**.
 ```  
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
-# **THIS** Implicit binding           
-**THIS** inside a method gets it's value from the inmediate object.
+# _THIS_ Implicit binding           
+_THIS_ inside a method gets it's value from the inmediate object.
 
 ----
 ```  
@@ -570,9 +570,9 @@ In the next example use arrow function to keep the lexical context of **THIS**.
   console.log(op.B.Reed())
 ```  
 ----
-**THIS** inside de Prototype chain (Inheritence)
+_THIS_ inside de Prototype chain (Inheritence)
 In the following example, the "Object p" doesn't possess the "method f", when "method f" is call the search starts at "Object p" and after no
-find it the search goes to its "Prototype o". If the "method f" is found in the "object o" chain prototype then **THIS**'s value 
+find it the search goes to its "Prototype o". If the "method f" is found in the "object o" chain prototype then _THIS_'s value 
 it will be "Object p" as is the method belongs to the "Object p".
 
 ----
@@ -586,8 +586,8 @@ it will be "Object p" as is the method belongs to the "Object p".
   console.log(p.f())// 5
 ```  
 ----
-**THIS** in "GETTER" or "SETTER"
-A function use as a "GETTER" or "SETTER" has its **THIS** value bind to the "Object" from which the property was stablish.
+_THIS_ in "GETTER" or "SETTER"
+A function use as a "GETTER" or "SETTER" has its _THIS_ value bind to the "Object" from which the property was stablish.
 
 ----
 ```
@@ -608,7 +608,7 @@ A function use as a "GETTER" or "SETTER" has its **THIS** value bind to the "Obj
   */
 ```  
 ----
-In this case we see the method invocation pattern. The **THIS** keyword is really useful when use for object and is good practice to set the strict mode
+In this case we see the method invocation pattern. The _THIS_ keyword is really useful when use for object and is good practice to set the strict mode
 on functions which have it in their context.
 
 ----
@@ -678,7 +678,7 @@ Function assigns a method after definition
   noel.lastnames()// Soto Calderon
 ```  
 ----
-Function returning object with **THIS** in a method
+Function returning object with _THIS_ in a method
 
 ----
 ```
@@ -703,7 +703,7 @@ Function returning object with **THIS** in a method
 ```  
 ----
 
-When using **THIS** inside a method is referring to the object which the method belongs. **THIS** object can call others methods and properties
+When using _THIS_ inside a method is referring to the object which the method belongs. _THIS_ object can call others methods and properties
 which the objects owns.
 
 ----
@@ -725,8 +725,8 @@ which the objects owns.
 ```  
 ----
 
-**THIS** inside of classes
-When **THIS** is use inside a method's class it refers to the object's instance from which the method was invoke.
+_THIS_ inside of classes
+When _THIS_ is use inside a method's class it refers to the object's instance from which the method was invoke.
 
 ----
 ```
@@ -749,12 +749,12 @@ When **THIS** is use inside a method's class it refers to the object's instance 
 ```  
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
-# **THIS** Explicit binding
+# _THIS_ Explicit binding
 Functions in JavaScript are a special type of Object (Function.Prototype) and as all Objects it has methods: **call**, **apply** and **bind**. These functions set the
-function context in other words change the function owner and there for the **THIS** value. 
+function context in other words change the function owner and there for the _THIS_ value. 
 
 Call function
-In this method the arguments are pass individually and the first parameter define a reference to **THIS**
+In this method the arguments are pass individually and the first parameter define a reference to _THIS_
 
 ----
 ```
@@ -825,7 +825,7 @@ Example 2
 ```  
 ----
 Apply function
-In this method the first method let us defined the deference to **THIS**, and second parameter is an array passing the function's arguments.
+In this method the first method let us defined the deference to _THIS_, and second parameter is an array passing the function's arguments.
 (Dispatcher pattern)
 
 ----
@@ -861,8 +861,8 @@ In this method the first method let us defined the deference to **THIS**, and se
 ----
 Bind function
 All functions can call this function since in JavaScript function are consider a special type of "Object".
-In this method the first parameter is for defining the reference to **THIS**, all other arguments are pass individually. **BIND** generates
-a new function fixing **THIS** value as is was in the **lexical context**.
+In this method the first parameter is for defining the reference to _THIS_, all other arguments are pass individually. **BIND** generates
+a new function fixing _THIS_ value as is was in the **lexical context**.
 
 ----
 ```
