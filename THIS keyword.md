@@ -6,10 +6,10 @@ except for the **THIS** keyword, which is a variable whos value seems to change 
 The reason to this behavior is that the object **THIS** has some kind of **dynamic scope** to define it's value, 
 that's why on execution time **THIS** changes to values that we didn't defined in our code.
 
-The changes to **THIS** values are due to the close relationship between the **THIS** object and the **execution context** in JavaScript ( 
-If the execution context changes also the **THIS** value). During the **execution time** of one code line of a JavaScript program, the 
-**execution context**(enviroment or scope in which a line of code is being executed) changes taking into consideration the owner object 
-of the function being call and **this** stores a reference to this owner object.
+The changes to **THIS** values are due to the close relationship between the **THIS** object and the **execution context** (_enviroment or 
+scope in which a line of code is being executed_) in JavaScript. 
+During the **execution time** of one code line of a JavaScript program, the **execution context** changes taking into consideration the owner object 
+of the function being call and **THIS** stores a reference to this owner object.
 
 It's important to understand how the value of **THIS** changes because sometimes it may seem that has one value but it changes to another, 
 for example: a function being call inside an object's method.
@@ -26,6 +26,7 @@ for example: a function being call inside an object's method.
       innerfunction();
     }
   }
+  person.talk() //Output: Mi names is +
 ```
 ----
 As mention before the **execution context** changes at **execution time** due to the function being call by it's owner object
