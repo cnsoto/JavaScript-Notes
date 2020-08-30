@@ -916,4 +916,4 @@ https://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejar
 https://www.youtube.com/watch?v=NV9sHLX-jZU&t=506s
 https://www.youtube.com/watch?v=Pv9flm-80vM&t=66s
 
-[return :point_up:]()
+[return :point_up:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#introduction)
