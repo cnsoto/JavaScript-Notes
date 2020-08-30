@@ -1,4 +1,4 @@
-# INTRODUCTION
+# 1. INTRODUCTION
 
 JavaScript is a programming language that uses **lexical scope** with **function scope** to define the variables values,
 except for the _THIS_ keyword, which is a variable whos value seems to change strangely and that we cannot control.
@@ -79,9 +79,11 @@ We can control and fixed the value of _THIS_ with: **clousure**, **call**, **app
  - [implicit](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-implicit-binding)
  - [explicit](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-explicit-binding)
                
-# _THIS_ Default binding
-In the **Global Execution Context**, _THIS_ refers to the **Global Object**, if we set **strict mode** on _THIS_ value is undefined,
-however we can still refer to the **Global Object** via the global property **globalThis**.
+# 2. _THIS_ Default binding
+In the **Global Execution Context**, _THIS_ refers to the **Global Object**(Window), if we set **strict mode** "ON", _THIS_ value is undefined,
+however we can still refer to the Global Object via the global property **globalThis**.
+
+Example 1
 
 ----
 ```
@@ -92,10 +94,13 @@ however we can still refer to the **Global Object** via the global property **gl
     that.hola="BEBE"
     return that;
   }
-  console.log(Global())
+  console.log(Global().hola)// "BEBE"
+  console.log(this.hola)// "BEBE"
+
 ```
 ----
-The _THIS_ value in the **global scope** refers to the **Global Object** (Window).
+
+Example 2
 
 ----
 ```
@@ -154,7 +159,7 @@ of the **window** object.
 ```
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
-# _THIS_ new binding
+# 3. _THIS_ new binding
 The **NEW** keyword is use together with **construction functions** (a function use to create object) assigning it to a variable to create objects. In which _THIS_ value is 
 refers to the new created instance.
 
@@ -248,7 +253,7 @@ A better approch to handdle this data protection integrety issue one solution wo
 ```  
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
-# _THIS_ Lexical Context binding
+# 4. _THIS_ Lexical Context binding
 
 ----
 ```  
@@ -551,7 +556,7 @@ In the next example use arrow function to keep the lexical context of _THIS_.
 ```  
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
-# _THIS_ Implicit binding           
+# 5. _THIS_ Implicit binding           
 _THIS_ inside a method gets it's value from the inmediate object.
 
 ----
@@ -749,7 +754,7 @@ When _THIS_ is use inside a method's class it refers to the object's instance fr
 ```  
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
-# _THIS_ Explicit binding
+# 6. _THIS_ Explicit binding
 Functions in JavaScript are a special type of Object (Function.Prototype) and as all Objects it has methods: **call**, **apply** and **bind**. These functions set the
 function context in other words change the function owner and there for the _THIS_ value. 
 
@@ -901,7 +906,7 @@ Building our own Bind function
 ```  
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
-# References
+# 7. References
 https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8
 https://medium.com/@osmanakar_65575/javascript-lexical-and-dynamic-scoping-72c17e4476dd
 https://spin.atomicobject.com/2014/10/20/javascript-scope-closures/
