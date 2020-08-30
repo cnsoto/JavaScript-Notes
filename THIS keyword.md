@@ -73,7 +73,7 @@ We can control and fixed the value of **THIS** with: **clousure**, **call**, **a
 ```
 ----
 Now that we know the **THIS** object it is important to understand how it is bind to the scope:
- - [Default(window)]()
+ - [Default(window)](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-default-binding)
  - new
  - Lexical
  - implicit
