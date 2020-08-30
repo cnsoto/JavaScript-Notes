@@ -130,9 +130,9 @@ When belonging to the **global context** the **THIS** value can be change outsid
   TellAge()// 22
 ```
 ----
-
 For correcting this behavior the strict mode is use. A function which has **'use strict'** in their scope the value **THIS** will be **undefined** instead 
 of the **window** object.
+
 ----
 ```
   const TellAge2 = function(){
@@ -237,10 +237,9 @@ A better approch to handdle this data protection integrety issue one solution wo
   console.log(colors2.r)//Uncaught Error: Missing new keyword at Color
 ```  
 ----
-
 # **THIS** Lexical Context binding
+
 ----
-  JS Code
 ```  
   function f1(){
     return this
@@ -254,12 +253,11 @@ A better approch to handdle this data protection integrety issue one solution wo
   console.log(f1()===f2())// false
 ```  
 ----
-
 In regular functions every new function defined has its own **THIS** keyword value, which owner is the global object (window), except if the
 function uses "strict mode" in which case is set to "undefined". The **THIS** keyword is not very useful in functions, where they really shine
 is when is use with objects.
+
 ----
-  JS Code
 ```
   var myApp = function(){
     var name = 'World'
@@ -298,10 +296,9 @@ is when is use with objects.
   */
 ```  
 ----
-
 Using **THIS** in a function with 'strict mode'
+
 ----
-  JS Code
 ```
   'use strict'
   this.table='window table'
@@ -318,13 +315,12 @@ Using **THIS** in a function with 'strict mode'
   */
 ```  
 ----
-
 Using **THIS** in an inner function
 Each function possess its own relation with **THIS** even inner functions. And by default **THIS**'s value is the "Global Object".
 In the next example, we bind the **THIS** value with the **CALL** function but then its change to "undefined" (because the "strict mode" is "ON")
 in the inner function. This is an unwanted behavior. (When a function changes the **THIS** value is know as a function loosing its context).
+
 ----
-  JS Code
 ```
   'use strict'
   this.table='window table'
@@ -352,8 +348,8 @@ For the example above where are three solutions:
   -C) arrow functions
 
 A) **THIS** with closures is not a very good solution
+
 ----
-  JS Code
 ```
   'use strict'
   this.table='window table'
@@ -375,10 +371,9 @@ A) **THIS** with closures is not a very good solution
   outtercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap
 ```  
 ----
-
 B) **CALL**, **APPLY** and **BIND** approch
+
 ----
-  JS Code
 ```
   'use strict'
   this.table='window table'
@@ -402,12 +397,11 @@ B) **CALL**, **APPLY** and **BIND** approch
   outtercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap cleaning Johns Table some soap cleaning Johns Table some soap
 ```  
 ----
-
 C) Arrow functions
 Unlike regular functions, **arrow functions** don't have their own **THIS** keyword, it uses the **OUTTER SCOPE**'s **THIS** value. In the next
 example the "innefunction" takes the "outterfunction"'s **THIS** which was set with the **CALL** function.
+
 ----
-  JS Code
 ```
   'use strict'
   this.table='window table'
@@ -428,10 +422,9 @@ example the "innefunction" takes the "outterfunction"'s **THIS** which was set w
   outtercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap 
 ```  
 ----
-
 Example 3
+
 ----
-  JS Code
 ```  
   class NameField{
     constructor(name){
@@ -456,12 +449,11 @@ Example 3
   */
 ```  
 ----
-
 In the above example we see that for invoking the "addName" method from the "NameGenerator" class inside a constructor function we use
 the **THIS** keyword, due to the method being added to the class. This means that **THIS** is referring to the class. One way to change 
 **THIS** value is via 'Event Listener'.
+
 ----
-  JS Code
 ```  
   class NameField{
     constructor(name){
@@ -487,13 +479,12 @@ the **THIS** keyword, due to the method being added to the class. This means tha
   const test = new NameGenerator();//Cannot read property 'undefined' of undefined
 ```  
 ----
-
 In the example above when we press the "button" it show us the "Cannot read ..." message because the "button" modifies the **THIS** value.
 In the class's constructor lexical scope **THIS** refers to the class an that's why it was able to find the "addName" method, but when the 
 button is press **THIS** value changes because the one "who call the function" was the button not the object instance of the class 
 'NameGenerator'. And the button doesn't has the properties "name" and "counter". We can correct this error using the **BIND** function.
+
 ----
-  JS Code
 ```  
   class NameField{
     constructor(name){
@@ -519,11 +510,10 @@ button is press **THIS** value changes because the one "who call the function" w
   const test = new NameGenerator();
 ```  
 ----
-
 Example 4 
 In the next example use arrow function to keep the lexical context of **THIS**.
+
 ----
-  JS Code
 ```  
   class NameField{
     constructor(name){
@@ -549,11 +539,10 @@ In the next example use arrow function to keep the lexical context of **THIS**.
   const test = new NameGenerator();
 ```  
 ----
-
 # **THIS** Implicit binding           
 **THIS** inside a method gets it's value from the inmediate object.
+
 ----
-  JS Code
 ```  
   function Reed(){
     return this.prop;
@@ -569,13 +558,12 @@ In the next example use arrow function to keep the lexical context of **THIS**.
   console.log(op.B.Reed())
 ```  
 ----
-
 **THIS** inside de Prototype chain (Inheritence)
 In the following example, the "Object p" doesn't possess the "method f", when "method f" is call the search starts at "Object p" and after no
 find it the search goes to its "Prototype o". If the "method f" is found in the "object o" chain prototype then **THIS**'s value 
 it will be "Object p" as is the method belongs to the "Object p".
+
 ----
-  JS Code
 ```
   var o={
     f:function(){return this.a+ this.b}
@@ -586,11 +574,10 @@ it will be "Object p" as is the method belongs to the "Object p".
   console.log(p.f())// 5
 ```  
 ----
-
 **THIS** in "GETTER" or "SETTER"
 A function use as a "GETTER" or "SETTER" has its **THIS** value bind to the "Object" from which the property was stablish.
+
 ----
-  JS Code
 ```
   function modulus(){
     return Math.sqt(this.re*this.re + this.im*this.im)
@@ -609,11 +596,10 @@ A function use as a "GETTER" or "SETTER" has its **THIS** value bind to the "Obj
   */
 ```  
 ----
-
 In this case we see the method invocation pattern. The **THIS** keyword is really useful when use for object and is good practice to set the strict mode
 on functions which have it in their context.
+
 ----
-  JS Code
 ```
   const fn = function() {
     return this;
@@ -641,10 +627,9 @@ on functions which have it in their context.
   user.foo1()// false
 ```  
 ----
-
 Function receives an object as an argument and adds a method
+
 ----
-  JS Code
 ```
   const tellName = function(obj){
     obj.talk = function(){
@@ -665,10 +650,9 @@ Function receives an object as an argument and adds a method
   john.talk()// John
 ```  
 ---
-
 Function assigns a method after definition
+
 ----
-  JS Code
 ```
   const tellLastName = function(){
     return this.father_lastname +' '+ this.mother_lastname;
@@ -682,10 +666,9 @@ Function assigns a method after definition
   noel.lastnames()// Soto Calderon
 ```  
 ----
-
 Function returning object with **THIS** in a method
+
 ----
-  JS Code
 ```
   const Person = function(name,age,mother){
     return{
@@ -710,8 +693,8 @@ Function returning object with **THIS** in a method
 
 When using **THIS** inside a method is referring to the object which the method belongs. **THIS** object can call others methods and properties
 which the objects owns.
+
 ----
-  JS Code
 ```
   const cleanTable = function(){
     console.log(`cleaning ${this.table}`)
@@ -732,8 +715,8 @@ which the objects owns.
 
 **THIS** inside of classes
 When **THIS** is use inside a method's class it refers to the object's instance from which the method was invoke.
+
 ----
-  JS Code
 ```
   class createRoom{
     constructor(name){
@@ -753,15 +736,14 @@ When **THIS** is use inside a method's class it refers to the object's instance 
   jill.cleanTable('Soap')// cleaning jill's table using Soap
 ```  
 ----
-
 # **THIS** Explicit binding
 Functions in JavaScript are a special type of Object (Function.Prototype) and as all Objects it has methods: **call**, **apply** and **bind**. These functions set the
 function context in other words change the function owner and there for the **THIS** value. 
 
 Call function
 In this method the arguments are pass individually and the first parameter define a reference to **THIS**
+
 ----
-  JS Code
 ```
   const talk = function(l1, l2, l3){
     console.log(`My name is ${this.name} and I speak ${l1}, ${l2} and ${l3}`)
@@ -809,10 +791,9 @@ In this method the arguments are pass individually and the first parameter defin
   printName.bind(person1)()// Angelina Jolie
 ```  
 ----
-
 Example 2
+
 ----
-  JS Code
 ```
   'use strict'
   this.table='window table'
@@ -830,12 +811,11 @@ Example 2
   cleanTable.call(johnsgarage.'some soap')  
 ```  
 ----
-
 Apply function
 In this method the first method let us defined the deference to **THIS**, and second parameter is an array passing the function's arguments.
 (Dispatcher pattern)
+
 ----
-  JS Code
 ```
   let person1 = {
     name: 'Angelina',
@@ -866,13 +846,12 @@ In this method the first method let us defined the deference to **THIS**, and se
   dispatch(person2, printName);//
 ```  
 ----
-
 Bind function
 All functions can call this function since in JavaScript function are consider a special type of "Object".
 In this method the first parameter is for defining the reference to **THIS**, all other arguments are pass individually. **BIND** generates
 a new function fixing **THIS** value as is was in the **lexical context**.
+
 ----
-  JS Code
 ```
   function Person(fn, ln){
     this.first_name = fn;
@@ -889,10 +868,9 @@ a new function fixing **THIS** value as is was in the **lexical context**.
   personDisplay()// Name: Paul Adams
 ```  
 ----
-
 Building our own Bind function
+
 ----
-  JS Code
 ```
   const person={
     text:"Greeting to all",
