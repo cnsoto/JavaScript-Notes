@@ -6,8 +6,8 @@ except for the **THIS** keyword, which is a variable whos value seems to change 
 The reason to this behavior is that the object **THIS** has some kind of **dynamic scope** to define it's value, 
 that's why on execution time **THIS** changes to values that we didn't defined in our code.
 
-The changes to **THIS** values are due to the close relationship between the **THIS** object and the **execution context** in JavaScript: 
-"If the execution context changes also the **THIS** value". During the **execution time** of one code line of a JavaScript program, the 
+The changes to **THIS** values are due to the close relationship between the **THIS** object and the **execution context** in JavaScript ( 
+If the execution context changes also the **THIS** value). During the **execution time** of one code line of a JavaScript program, the 
 **execution context**(enviroment or scope in which a line of code is being executed) changes taking into consideration the owner object 
 of the function being call and **this** stores a reference to this owner object.
 
