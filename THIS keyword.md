@@ -16,7 +16,7 @@ for example: a function being call inside an object's method.
 ----
 JS Code
   ```
-  let person = {`
+  let person = {
     name:"Carlos",
     talk: function(){
       let text= 'Mi name is';
@@ -44,7 +44,9 @@ We can control and fixed the value of **THIS** with: **clousure**, **call**, **a
 ----
 JS code
   ```
-  function boo(){ return this+13}
+  function boo(){ 
+    return this+13
+  }
   function foo(){ return typeof this}
   function buzz(){ return this}
   function too(){ return `${typeof this} 13`}
