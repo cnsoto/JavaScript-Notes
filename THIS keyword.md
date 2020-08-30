@@ -15,8 +15,8 @@ It's important to understand how the value of **THIS** changes because sometimes
 for example: a function being call inside an object's method.
 ----
 JS Code
-
-  let person = {
+  ```
+  let person = {`
     name:"Carlos",
     talk: function(){
       let text= 'Mi name is';
@@ -26,6 +26,7 @@ JS Code
       innerfunction();
     }
   }
+  ```
 ----
 As mention before the **execution context** changes at **execution time** due to the function being call by it's owner object
 Since a function can be call diferent ways (implicit, explicit, event listenes, others.), the same function can have diferent **execution context**, 
@@ -42,7 +43,7 @@ In JavaScript is not posible to alter how the **lexical scope** works, but it is
 We can control and fixed the value of **THIS** with: **clousure**, **call**, **apply**, **bind** and **arrow functions**.
 ----
 JS code
-
+  ```
   function boo(){ return this+13}
   function foo(){ return typeof this}
   function buzz(){ return this}
@@ -58,6 +59,7 @@ JS code
   foo.call(roles)// "object"
   buzz.call(roles)// Symbol {Symbol(rol)}
   too.call(roles)// "object 13"
+  ```
 ----
 Now that we know the **THIS** object it is important to understand how it is bind to the scope:
  -Default(window)
@@ -71,6 +73,7 @@ In the **Global Execution Context**, **THIS** refers to the **Global Object**, i
 however we can still refer to the **Global Object** via the global property **globalThis**.
 ----
   JS
+  ```
   this.hola="hola"
   function Global(){
     'use strict'
@@ -79,12 +82,13 @@ however we can still refer to the **Global Object** via the global property **gl
     return that;
   }
   console.log(Global())
+  ```
 ----
 
 The **THIS** value in the **global scope** refers to the **Global Object** (Window).
 ----
   JS Code
-
+  ```
   this.table='window table'
   this.garage={
     table:'garage table'
@@ -100,36 +104,39 @@ The **THIS** value in the **global scope** refers to the **Global Object** (Wind
     the object "johnsRoom" is a private property since the **LET** keyword was used if the **VAR** keyword is use instead then it will
     possible the access to the property this way.
   */
+  ```
 ----
 
 When a function is invoke as a functions **THIS**'s value refers to the **Global Object** (Window).
 ----
   JS Code
-
+```
   function test(){
     console.log(this === window)
   }
   console.log(this === window)// true
   test()// true
+``` 
 ----
 
 When belonging to the **global context** the **THIS** value can be change outside the function, their's no data encapsuling.
 ----
   JS Code
-
+```
   const TellAge = function(){
     console.log(this.age)
   }
   TellAge()// undefined
   window.age = 22
   TellAge()// 22
+```
 ----
 
 For correcting this behavior the strict mode is use. A function which has **'use strict'** in their scope the value **THIS** will be **undefined** instead 
 of the **window** object.
 ----
   JS Code
-
+```
   const TellAge2 = function(){
     'use strict'
     console.log(this.age)
@@ -137,6 +144,7 @@ of the **window** object.
   TellAge2()// undefined
   window.age = 22
   TellAge2()// Uncaught TypeError: Cannot read property 'age' of undefined at TellAge2
+```
 ----
 
 # **THIS** new binding
@@ -144,7 +152,7 @@ The **NEW** keyword is use together with **construction functions** (a function 
 refers to the new created instance.
 ----
   JS Code
-
+```
   const Person = function(fn, ln){
     this.first_name = fn;
     this.last_name = ln;
@@ -157,12 +165,13 @@ refers to the new created instance.
   mom.displayName()//Name: Joceline Aguilar
   dad.displayName()//Name: Noel Soto 
   mom===dad// false
+```
 ----
 
 Example 2
 ----
   JS Code
-
+```
   'use strict'
   const createRoom=function(name){
     this.table=`${name}'s table`
@@ -175,12 +184,13 @@ Example 2
   let johnsRoom = new createRoom('john')
   jillsRoom.cleanTable('some soap')// cleaning jill's table using some soap
   johnsRoom.cleanTable("Zest's soap")// cleaning john's table using Zest's soap
+```
 ----
 
 Example 3
 ----
   JS Code
-
+```
   function C(){
     this.a=37
   }
@@ -192,12 +202,13 @@ Example 3
   var C2 = new C2()
   console.log(C.a)// 37
   console.log(C2.a)// 30 
+```
 ----
 
 An object constructor function has the problem that if you omit the new keyword the behavior is modify and doesn't show any errors.
 ----
   JS Code
-
+```
   var r="red"
   function Color(r,g,b){
     this.r=r;
@@ -209,12 +220,13 @@ An object constructor function has the problem that if you omit the new keyword 
   console.log(colors1.r)//red apple
   console.log(r)//red car
   console.log(colors2.r)//Uncaught TypeError: Cannot read property 'r' of undefined
+```  
 ----
 
 A better approch to handdle this data protection integrety issue one solution would be.
 ----
   JS Code
-
+```
   var r="red"
   function Color(r,g,b){
     if(this instanceof Color){
@@ -230,11 +242,13 @@ A better approch to handdle this data protection integrety issue one solution wo
   console.log(colors1.r)//red apple
   console.log(r)//red car
   console.log(colors2.r)//Uncaught Error: Missing new keyword at Color
+```  
 ----
 
 # **THIS** Lexical Context binding
 ----
   JS Code
+```  
   function f1(){
     return this
   }
@@ -245,6 +259,7 @@ A better approch to handdle this data protection integrety issue one solution wo
   console.log(f1()===window)// true
   console.log(f2()===undefined)// true
   console.log(f1()===f2())// false
+```  
 ----
 
 In regular functions every new function defined has its own **THIS** keyword value, which owner is the global object (window), except if the
@@ -252,7 +267,7 @@ function uses "strict mode" in which case is set to "undefined". The **THIS** ke
 is when is use with objects.
 ----
   JS Code
-
+```
   var myApp = function(){
     var name = 'World'
     var sayHello = function(){
@@ -288,12 +303,13 @@ is when is use with objects.
     Since the "callback" is invoke like a simple function call inside a function, **THIS** refers to the Global Object.
     **THIS** inside a function
   */
+```  
 ----
 
 Using **THIS** in a function with 'strict mode'
 ----
   JS Code
-
+```
   'use strict'
   this.table='window table'
   const cleanTable = function(){
@@ -307,6 +323,7 @@ Using **THIS** in a function with 'strict mode'
   /* Note
     The 'strict mode' permeates to inner functions scope
   */
+```  
 ----
 
 Using **THIS** in an inner function
@@ -315,7 +332,7 @@ In the next example, we bind the **THIS** value with the **CALL** function but t
 in the inner function. This is an unwanted behavior. (When a function changes the **THIS** value is know as a function loosing its context).
 ----
   JS Code
-
+```
   'use strict'
   this.table='window table'
   this.garage={
@@ -333,6 +350,7 @@ in the inner function. This is an unwanted behavior. (When a function changes th
   outtercleanTable.call(this,'some soap');// Uncaught TypeError: Cannot read property 'table' of undefined
   outtercleanTable.call(this.garage,'some soap');// Uncaught TypeError: Cannot read property 'table' of undefined
   outtercleanTable.call(johnsRoom,'some soap');// Uncaught TypeError: Cannot read property 'table' of undefined
+```  
 ----
 
 For the example above where are three solutions:
@@ -343,7 +361,7 @@ For the example above where are three solutions:
 A) **THIS** with closures is not a very good solution
 ----
   JS Code
-
+```
   'use strict'
   this.table='window table'
   this.garage={
@@ -362,12 +380,13 @@ A) **THIS** with closures is not a very good solution
   outtercleanTable.call(this,'some soap');// cleaning window table some soap
   outtercleanTable.call(this.garage,'some soap');// cleaning garage table some soap
   outtercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap
+```  
 ----
 
 B) **CALL**, **APPLY** and **BIND** approch
 ----
   JS Code
-
+```
   'use strict'
   this.table='window table'
   this.garage={
@@ -388,6 +407,7 @@ B) **CALL**, **APPLY** and **BIND** approch
   outtercleanTable.call(this,'some soap');// cleaning window table some soap cleaning window table some soap cleaning window table some soap
   outtercleanTable.call(this.garage,'some soap');// cleaning garage table some soap cleaning garage table some soap cleaning garage table some soap
   outtercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap cleaning Johns Table some soap cleaning Johns Table some soap
+```  
 ----
 
 C) Arrow functions
@@ -395,7 +415,7 @@ Unlike regular functions, **arrow functions** don't have their own **THIS** keyw
 example the "innefunction" takes the "outterfunction"'s **THIS** which was set with the **CALL** function.
 ----
   JS Code
-
+```
   'use strict'
   this.table='window table'
   this.garage={
@@ -413,11 +433,13 @@ example the "innefunction" takes the "outterfunction"'s **THIS** which was set w
   outtercleanTable.call(this,'some soap');// cleaning window table some soap
   outtercleanTable.call(this.garage,'some soap');// cleaning garage table some soap 
   outtercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap 
+```  
 ----
 
 Example 3
 ----
   JS Code
+```  
   class NameField{
     constructor(name){
       let ul = document.querySelector("idulcollegues")
@@ -439,6 +461,7 @@ Example 3
   /* Note 3
     this.addName is a reference to the function. If parenthesis were add the function will execute during parsing.
   */
+```  
 ----
 
 In the above example we see that for invoking the "addName" method from the "NameGenerator" class inside a constructor function we use
@@ -446,6 +469,7 @@ the **THIS** keyword, due to the method being added to the class. This means tha
 **THIS** value is via 'Event Listener'.
 ----
   JS Code
+```  
   class NameField{
     constructor(name){
       let ul = document.querySelector("idulcollegues")
@@ -468,6 +492,7 @@ the **THIS** keyword, due to the method being added to the class. This means tha
     }
   }
   const test = new NameGenerator();//Cannot read property 'undefined' of undefined
+```  
 ----
 
 In the example above when we press the "button" it show us the "Cannot read ..." message because the "button" modifies the **THIS** value.
@@ -476,6 +501,7 @@ button is press **THIS** value changes because the one "who call the function" w
 'NameGenerator'. And the button doesn't has the properties "name" and "counter". We can correct this error using the **BIND** function.
 ----
   JS Code
+```  
   class NameField{
     constructor(name){
       let ul = document.querySelector("idulcollegues")
@@ -498,12 +524,14 @@ button is press **THIS** value changes because the one "who call the function" w
     }
   }
   const test = new NameGenerator();
+```  
 ----
 
 Example 4 
 In the next example use arrow function to keep the lexical context of **THIS**.
 ----
   JS Code
+```  
   class NameField{
     constructor(name){
       let ul = document.querySelector("idulcollegues")
@@ -526,12 +554,14 @@ In the next example use arrow function to keep the lexical context of **THIS**.
     }
   }
   const test = new NameGenerator();
+```  
 ----
 
 # **THIS** Implicit binding           
 **THIS** inside a method gets it's value from the inmediate object.
 ----
   JS Code
+```  
   function Reed(){
     return this.prop;
   }
@@ -544,6 +574,7 @@ In the next example use arrow function to keep the lexical context of **THIS**.
     Reed
   }
   console.log(op.B.Reed())
+```  
 ----
 
 **THIS** inside de Prototype chain (Inheritence)
@@ -552,7 +583,7 @@ find it the search goes to its "Prototype o". If the "method f" is found in the 
 it will be "Object p" as is the method belongs to the "Object p".
 ----
   JS Code
-
+```
   var o={
     f:function(){return this.a+ this.b}
   }
@@ -560,13 +591,14 @@ it will be "Object p" as is the method belongs to the "Object p".
   p.a=4;
   p.b=1;
   console.log(p.f())// 5
+```  
 ----
 
 **THIS** in "GETTER" or "SETTER"
 A function use as a "GETTER" or "SETTER" has its **THIS** value bind to the "Object" from which the property was stablish.
 ----
   JS Code
-
+```
   function modulus(){
     return Math.sqt(this.re*this.re + this.im*this.im)
   }
@@ -582,13 +614,14 @@ A function use as a "GETTER" or "SETTER" has its **THIS** value bind to the "Obj
   /* Note
     GET and SET are defined as funcstions but they are use as properties.
   */
+```  
 ----
 
 In this case we see the method invocation pattern. The **THIS** keyword is really useful when use for object and is good practice to set the strict mode
 on functions which have it in their context.
 ----
   JS Code
-
+```
   const fn = function() {
     return this;
   };
@@ -613,12 +646,13 @@ on functions which have it in their context.
   const fun1 = user.foo1; 
   fun1()// true
   user.foo1()// false
+```  
 ----
 
 Function receives an object as an argument and adds a method
 ----
   JS Code
-
+```
   const tellName = function(obj){
     obj.talk = function(){
       console.log(this.name)
@@ -636,12 +670,13 @@ Function receives an object as an argument and adds a method
   tellName(john)
   matt.talk()// Matt
   john.talk()// John
+```  
 ---
 
 Function assigns a method after definition
 ----
   JS Code
-
+```
   const tellLastName = function(){
     return this.father_lastname +' '+ this.mother_lastname;
   }
@@ -652,12 +687,13 @@ Function assigns a method after definition
   }
   noel.lastnames = tellLastName;
   noel.lastnames()// Soto Calderon
+```  
 ----
 
 Function returning object with **THIS** in a method
 ----
   JS Code
-
+```
   const Person = function(name,age,mother){
     return{
       name:name,
@@ -676,13 +712,14 @@ Function returning object with **THIS** in a method
   let ana = Person('ana',25,'claire')
   ana.talk()// ana
   ana.mother.talk()// claire
+```  
 ----
 
 When using **THIS** inside a method is referring to the object which the method belongs. **THIS** object can call others methods and properties
 which the objects owns.
 ----
   JS Code
-
+```
   const cleanTable = function(){
     console.log(`cleaning ${this.table}`)
   }
@@ -697,13 +734,14 @@ which the objects owns.
   }
   johnsRoom.cleanTable()// cleaning johns Table
   this.garage.cleanTable()// cleaning garage table
+```  
 ----
 
 **THIS** inside of classes
 When **THIS** is use inside a method's class it refers to the object's instance from which the method was invoke.
 ----
   JS Code
-
+```
   class createRoom{
     constructor(name){
       this.table = `${name}'s table`
@@ -720,6 +758,7 @@ When **THIS** is use inside a method's class it refers to the object's instance 
   let jill = new createRoom('jill')
   john.cleanTable('Shampoo')// cleaning John's table using Shampoo
   jill.cleanTable('Soap')// cleaning jill's table using Soap
+```  
 ----
 
 # **THIS** Explicit binding
@@ -730,7 +769,7 @@ Call function
 In this method the arguments are pass individually and the first parameter define a reference to **THIS**
 ----
   JS Code
-
+```
   const talk = function(l1, l2, l3){
     console.log(`My name is ${this.name} and I speak ${l1}, ${l2} and ${l3}`)
   }
@@ -775,12 +814,13 @@ In this method the arguments are pass individually and the first parameter defin
   printName.call(person2)// Scarlett Johanson
   printName.bind(person2)()// Scarlett Johanson
   printName.bind(person1)()// Angelina Jolie
+```  
 ----
 
 Example 2
 ----
   JS Code
-
+```
   'use strict'
   this.table='window table'
   this.garage={
@@ -795,6 +835,7 @@ Example 2
   cleanTable.call(this,'some soap')
   cleanTable.call(this.garage.'some soap')
   cleanTable.call(johnsgarage.'some soap')  
+```  
 ----
 
 Apply function
@@ -802,7 +843,7 @@ In this method the first method let us defined the deference to **THIS**, and se
 (Dispatcher pattern)
 ----
   JS Code
-
+```
   let person1 = {
     name: 'Angelina',
     lastName: 'Jolie',
@@ -830,6 +871,7 @@ In this method the first method let us defined the deference to **THIS**, and se
   dispatch(person1, printName);// 
   dispatch(person2, updatePerson, ['Scarlett','Johanson','22/11/1982','The Avengers'])// 
   dispatch(person2, printName);//
+```  
 ----
 
 Bind function
@@ -838,7 +880,7 @@ In this method the first parameter is for defining the reference to **THIS**, al
 a new function fixing **THIS** value as is was in the **lexical context**.
 ----
   JS Code
-
+```
   function Person(fn, ln){
     this.first_name = fn;
     this.last_name = ls;
@@ -852,12 +894,13 @@ a new function fixing **THIS** value as is was in the **lexical context**.
   person.displayName()// Name: John Reed
   person2.displayName()// Name: Paul Adams
   personDisplay()// Name: Paul Adams
+```  
 ----
 
 Building our own Bind function
 ----
   JS Code
-
+```
   const person={
     text:"Greeting to all",
     hello(){
@@ -871,4 +914,5 @@ Building our own Bind function
   }
   var newBinding = myBinding(person.hello, person)
   newBinding()//Greeting to all
+```  
 ----
