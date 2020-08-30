@@ -153,7 +153,7 @@ of the **window** object.
   TellAge2()// Uncaught TypeError: Cannot read property 'age' of undefined at TellAge2
 ```
 ----
-[return to :pushpin:]()
+[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
 # **THIS** new binding
 The **NEW** keyword is use together with **construction functions** (a function use to create object) assigning it to a variable to create objects. In which **THIS** value is 
 refers to the new created instance.
@@ -247,6 +247,7 @@ A better approch to handdle this data protection integrety issue one solution wo
   console.log(colors2.r)//Uncaught Error: Missing new keyword at Color
 ```  
 ----
+[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
 # **THIS** Lexical Context binding
 
 ----
@@ -549,6 +550,7 @@ In the next example use arrow function to keep the lexical context of **THIS**.
   const test = new NameGenerator();
 ```  
 ----
+[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
 # **THIS** Implicit binding           
 **THIS** inside a method gets it's value from the inmediate object.
 
@@ -746,6 +748,7 @@ When **THIS** is use inside a method's class it refers to the object's instance 
   jill.cleanTable('Soap')// cleaning jill's table using Soap
 ```  
 ----
+[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
 # **THIS** Explicit binding
 Functions in JavaScript are a special type of Object (Function.Prototype) and as all Objects it has methods: **call**, **apply** and **bind**. These functions set the
 function context in other words change the function owner and there for the **THIS** value. 
