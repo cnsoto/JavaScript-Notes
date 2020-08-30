@@ -14,9 +14,8 @@ of the function being call and _THIS_ stores a reference to this owner object.
 It's important to understand how the value of _THIS_ changes because sometimes it may seem that has one value but it changes to another, 
 for example: a function being call inside an object's method.
 
-Example 1.1
-
 ----
+Example 1.1
 ```
   let person = {
     name:"Carlos",
@@ -48,6 +47,7 @@ In JavaScript is not posible to alter how the lexical scope works, but it is pos
 We can control and fixed the value of _THIS_ with: **clousure**, **call**, **apply**, **bind** and **arrow functions**.
 
 ----
+Example 1.2
 ```
   function boo(){ 
     return this+13
@@ -85,9 +85,8 @@ We can control and fixed the value of _THIS_ with: **clousure**, **call**, **app
 In the **Global Execution Context**, _THIS_ refers to the **Global Object**(Window), if we set **strict mode** "ON", _THIS_ value is undefined,
 however we can still refer to the Global Object via the global property **globalThis**.
 
-Example 1
-
 ----
+Example 2.1
 ```
   this.hola="hola"
   function Global(){
