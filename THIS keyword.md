@@ -8,7 +8,7 @@ that's why on execution time _THIS_ changes to values that we didn't defined in 
 
 The changes to _THIS_ values are due to the close relationship between the _THIS_ object and the **execution context** (_enviroment or 
 scope in which a line of code is being executed_) in JavaScript. 
-During the **execution time** of one code line of a JavaScript program, the **execution context** changes taking into consideration the owner object 
+During the **execution time** of one code line of a JavaScript program, the execution context changes taking into consideration the owner object 
 of the function being call and _THIS_ stores a reference to this owner object.
 
 It's important to understand how the value of _THIS_ changes because sometimes it may seem that has one value but it changes to another, 
