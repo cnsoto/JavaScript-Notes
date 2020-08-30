@@ -1,6 +1,6 @@
 # INTRODUCTION
 
-JavaScript is a programming language that uses lexical scope with function scope to define the variables values,
+JavaScript is a programming language that uses **lexical scope** with **function scope** to define the variables values,
 except for the **THIS** keyword, which is a variable whos value seems to change strangely and that we cannot control.
 
 The reason to this behavior is that the object **THIS** has some kind of **dynamic scope** to define it's value, 
@@ -13,9 +13,9 @@ of the function being call and **this** stores a reference to this owner object.
 
 It's important to understand how the value of **THIS** changes because sometimes it may seem that has one value but it changes to another, 
 for example: a function being call inside an object's method.
+
 ----
-JS Code
-  ```
+```
   let person = {
     name:"Carlos",
     talk: function(){
@@ -26,7 +26,7 @@ JS Code
       innerfunction();
     }
   }
-  ```
+```
 ----
 As mention before the **execution context** changes at **execution time** due to the function being call by it's owner object
 Since a function can be call diferent ways (implicit, explicit, event listenes, others.), the same function can have diferent **execution context**, 
@@ -41,9 +41,9 @@ being all posibles values of **THIS**.
 
 In JavaScript is not posible to alter how the **lexical scope** works, but it is possible to control the **execution context** in which we call our functions. 
 We can control and fixed the value of **THIS** with: **clousure**, **call**, **apply**, **bind** and **arrow functions**.
+
 ----
-JS code
-  ```
+```
   function boo(){ 
     return this+13
   }
@@ -61,7 +61,7 @@ JS code
   foo.call(roles)// "object"
   buzz.call(roles)// Symbol {Symbol(rol)}
   too.call(roles)// "object 13"
-  ```
+```
 ----
 Now that we know the **THIS** object it is important to understand how it is bind to the scope:
  -Default(window)
@@ -73,9 +73,9 @@ Now that we know the **THIS** object it is important to understand how it is bin
 # **THIS** Default binding
 In the **Global Execution Context**, **THIS** refers to the **Global Object**, if we set **strict mode** on **THIS** value is undefined,
 however we can still refer to the **Global Object** via the global property **globalThis**.
+
 ----
-  JS
-  ```
+```
   this.hola="hola"
   function Global(){
     'use strict'
@@ -84,13 +84,12 @@ however we can still refer to the **Global Object** via the global property **gl
     return that;
   }
   console.log(Global())
-  ```
+```
 ----
-
 The **THIS** value in the **global scope** refers to the **Global Object** (Window).
+
 ----
-  JS Code
-  ```
+```
   this.table='window table'
   this.garage={
     table:'garage table'
@@ -106,12 +105,11 @@ The **THIS** value in the **global scope** refers to the **Global Object** (Wind
     the object "johnsRoom" is a private property since the **LET** keyword was used if the **VAR** keyword is use instead then it will
     possible the access to the property this way.
   */
-  ```
+```
 ----
-
 When a function is invoke as a functions **THIS**'s value refers to the **Global Object** (Window).
+
 ----
-  JS Code
 ```
   function test(){
     console.log(this === window)
@@ -120,10 +118,9 @@ When a function is invoke as a functions **THIS**'s value refers to the **Global
   test()// true
 ``` 
 ----
-
 When belonging to the **global context** the **THIS** value can be change outside the function, their's no data encapsuling.
+
 ----
-  JS Code
 ```
   const TellAge = function(){
     console.log(this.age)
@@ -137,7 +134,6 @@ When belonging to the **global context** the **THIS** value can be change outsid
 For correcting this behavior the strict mode is use. A function which has **'use strict'** in their scope the value **THIS** will be **undefined** instead 
 of the **window** object.
 ----
-  JS Code
 ```
   const TellAge2 = function(){
     'use strict'
@@ -148,12 +144,11 @@ of the **window** object.
   TellAge2()// Uncaught TypeError: Cannot read property 'age' of undefined at TellAge2
 ```
 ----
-
 # **THIS** new binding
 The **NEW** keyword is use together with **construction functions** (a function use to create object) assigning it to a variable to create objects. In which **THIS** value is 
 refers to the new created instance.
+
 ----
-  JS Code
 ```
   const Person = function(fn, ln){
     this.first_name = fn;
@@ -169,10 +164,9 @@ refers to the new created instance.
   mom===dad// false
 ```
 ----
-
 Example 2
+
 ----
-  JS Code
 ```
   'use strict'
   const createRoom=function(name){
@@ -188,10 +182,9 @@ Example 2
   johnsRoom.cleanTable("Zest's soap")// cleaning john's table using Zest's soap
 ```
 ----
-
 Example 3
+
 ----
-  JS Code
 ```
   function C(){
     this.a=37
@@ -206,10 +199,9 @@ Example 3
   console.log(C2.a)// 30 
 ```
 ----
-
 An object constructor function has the problem that if you omit the new keyword the behavior is modify and doesn't show any errors.
+
 ----
-  JS Code
 ```
   var r="red"
   function Color(r,g,b){
@@ -224,10 +216,9 @@ An object constructor function has the problem that if you omit the new keyword 
   console.log(colors2.r)//Uncaught TypeError: Cannot read property 'r' of undefined
 ```  
 ----
-
 A better approch to handdle this data protection integrety issue one solution would be.
+
 ----
-  JS Code
 ```
   var r="red"
   function Color(r,g,b){
