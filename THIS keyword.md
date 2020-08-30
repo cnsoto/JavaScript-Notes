@@ -14,6 +14,8 @@ of the function being call and _THIS_ stores a reference to this owner object.
 It's important to understand how the value of _THIS_ changes because sometimes it may seem that has one value but it changes to another, 
 for example: a function being call inside an object's method.
 
+Example 1.1
+
 ----
 ```
   let person = {
