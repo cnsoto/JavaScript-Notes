@@ -101,9 +101,8 @@ Example 2.1
 ```
 ----
 
-Example 2
-
 ----
+Example 2.2
 ```
   this.table='window table'
   this.garage={
@@ -125,6 +124,7 @@ Example 2
 When a function is invoke as a functions _THIS_'s value refers to the **Global Object** (Window).
 
 ----
+Example 2.3
 ```
   function test(){
     console.log(this === window)
@@ -136,6 +136,7 @@ When a function is invoke as a functions _THIS_'s value refers to the **Global O
 When belonging to the **global context** the _THIS_ value can be change outside the function, their's no data encapsuling.
 
 ----
+Example 2.4
 ```
   const TellAge = function(){
     console.log(this.age)
@@ -149,6 +150,7 @@ For correcting this behavior the strict mode is use. A function which has **'use
 of the **window** object.
 
 ----
+Example 2.5
 ```
   const TellAge2 = function(){
     'use strict'
@@ -165,6 +167,7 @@ The **NEW** keyword is use together with **construction functions** (a function 
 refers to the new created instance.
 
 ----
+Example 3.1
 ```
   const Person = function(fn, ln){
     this.first_name = fn;
@@ -180,9 +183,9 @@ refers to the new created instance.
   mom===dad// false
 ```
 ----
-Example 2
 
 ----
+Example 3.2
 ```
   'use strict'
   const createRoom=function(name){
@@ -198,9 +201,9 @@ Example 2
   johnsRoom.cleanTable("Zest's soap")// cleaning john's table using Zest's soap
 ```
 ----
-Example 3
 
 ----
+Example 3.3
 ```
   function C(){
     this.a=37
@@ -218,6 +221,7 @@ Example 3
 An object constructor function has the problem that if you omit the new keyword the behavior is modify and doesn't show any errors.
 
 ----
+Example 3.4
 ```
   var r="red"
   function Color(r,g,b){
@@ -235,6 +239,7 @@ An object constructor function has the problem that if you omit the new keyword 
 A better approch to handdle this data protection integrety issue one solution would be.
 
 ----
+Example 3.5
 ```
   var r="red"
   function Color(r,g,b){
@@ -257,6 +262,7 @@ A better approch to handdle this data protection integrety issue one solution wo
 # 4. _THIS_ Lexical Context binding
 
 ----
+Example 4.1
 ```  
   function f1(){
     return this
@@ -275,6 +281,7 @@ function uses "strict mode" in which case is set to "undefined". The _THIS_ keyw
 is when is use with objects.
 
 ----
+Example 4.2
 ```
   var myApp = function(){
     var name = 'World'
@@ -316,6 +323,7 @@ is when is use with objects.
 Using _THIS_ in a function with 'strict mode'
 
 ----
+Example 4.3
 ```
   'use strict'
   this.table='window table'
@@ -338,6 +346,7 @@ In the next example, we bind the _THIS_ value with the **CALL** function but the
 in the inner function. This is an unwanted behavior. (When a function changes the _THIS_ value is know as a function loosing its context).
 
 ----
+Example 4.4
 ```
   'use strict'
   this.table='window table'
@@ -367,6 +376,7 @@ For the example above where are three solutions:
 A) _THIS_ with closures is not a very good solution
 
 ----
+Example 4.5
 ```
   'use strict'
   this.table='window table'
@@ -391,6 +401,7 @@ A) _THIS_ with closures is not a very good solution
 B) **CALL**, **APPLY** and **BIND** approch
 
 ----
+Example 4.6
 ```
   'use strict'
   this.table='window table'
@@ -419,6 +430,7 @@ Unlike regular functions, **arrow functions** don't have their own _THIS_ keywor
 example the "innefunction" takes the "outterfunction"'s _THIS_ which was set with the **CALL** function.
 
 ----
+Example 4.7
 ```
   'use strict'
   this.table='window table'
@@ -439,9 +451,9 @@ example the "innefunction" takes the "outterfunction"'s _THIS_ which was set wit
   outtercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap 
 ```  
 ----
-Example 3
 
 ----
+Example 4.8
 ```  
   class NameField{
     constructor(name){
@@ -471,6 +483,7 @@ the _THIS_ keyword, due to the method being added to the class. This means that 
 _THIS_ value is via 'Event Listener'.
 
 ----
+Example 4.9
 ```  
   class NameField{
     constructor(name){
@@ -502,6 +515,7 @@ button is press _THIS_ value changes because the one "who call the function" was
 'NameGenerator'. And the button doesn't has the properties "name" and "counter". We can correct this error using the **BIND** function.
 
 ----
+Example 4.10
 ```  
   class NameField{
     constructor(name){
@@ -527,10 +541,10 @@ button is press _THIS_ value changes because the one "who call the function" was
   const test = new NameGenerator();
 ```  
 ----
-Example 4 
 In the next example use arrow function to keep the lexical context of _THIS_.
 
 ----
+Example 4.11
 ```  
   class NameField{
     constructor(name){
@@ -561,6 +575,7 @@ In the next example use arrow function to keep the lexical context of _THIS_.
 _THIS_ inside a method gets it's value from the inmediate object.
 
 ----
+Example 5.1
 ```  
   function Reed(){
     return this.prop;
@@ -582,6 +597,7 @@ find it the search goes to its "Prototype o". If the "method f" is found in the 
 it will be "Object p" as is the method belongs to the "Object p".
 
 ----
+Example 5.2
 ```
   var o={
     f:function(){return this.a+ this.b}
@@ -596,6 +612,7 @@ _THIS_ in "GETTER" or "SETTER"
 A function use as a "GETTER" or "SETTER" has its _THIS_ value bind to the "Object" from which the property was stablish.
 
 ----
+Example 5.3
 ```
   function modulus(){
     return Math.sqt(this.re*this.re + this.im*this.im)
@@ -618,6 +635,7 @@ In this case we see the method invocation pattern. The _THIS_ keyword is really 
 on functions which have it in their context.
 
 ----
+Example 5.4
 ```
   const fn = function() {
     return this;
@@ -648,6 +666,7 @@ on functions which have it in their context.
 Function receives an object as an argument and adds a method
 
 ----
+Example 5.5
 ```
   const tellName = function(obj){
     obj.talk = function(){
@@ -671,6 +690,7 @@ Function receives an object as an argument and adds a method
 Function assigns a method after definition
 
 ----
+Example 5.6
 ```
   const tellLastName = function(){
     return this.father_lastname +' '+ this.mother_lastname;
@@ -687,6 +707,7 @@ Function assigns a method after definition
 Function returning object with _THIS_ in a method
 
 ----
+Example 5.7
 ```
   const Person = function(name,age,mother){
     return{
@@ -713,6 +734,7 @@ When using _THIS_ inside a method is referring to the object which the method be
 which the objects owns.
 
 ----
+Example 5.8
 ```
   const cleanTable = function(){
     console.log(`cleaning ${this.table}`)
@@ -735,6 +757,7 @@ _THIS_ inside of classes
 When _THIS_ is use inside a method's class it refers to the object's instance from which the method was invoke.
 
 ----
+Example 5.9
 ```
   class createRoom{
     constructor(name){
@@ -763,6 +786,7 @@ Call function
 In this method the arguments are pass individually and the first parameter define a reference to _THIS_
 
 ----
+Example 6.1
 ```
   const talk = function(l1, l2, l3){
     console.log(`My name is ${this.name} and I speak ${l1}, ${l2} and ${l3}`)
@@ -810,9 +834,9 @@ In this method the arguments are pass individually and the first parameter defin
   printName.bind(person1)()// Angelina Jolie
 ```  
 ----
-Example 2
 
 ----
+Example 6.2
 ```
   'use strict'
   this.table='window table'
@@ -835,6 +859,7 @@ In this method the first method let us defined the deference to _THIS_, and seco
 (Dispatcher pattern)
 
 ----
+Example 6.3
 ```
   let person1 = {
     name: 'Angelina',
@@ -871,6 +896,7 @@ In this method the first parameter is for defining the reference to _THIS_, all 
 a new function fixing _THIS_ value as is was in the **lexical context**.
 
 ----
+Example 6.4
 ```
   function Person(fn, ln){
     this.first_name = fn;
@@ -890,6 +916,7 @@ a new function fixing _THIS_ value as is was in the **lexical context**.
 Building our own Bind function
 
 ----
+Example 6.5
 ```
   const person={
     text:"Greeting to all",
