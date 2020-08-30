@@ -29,18 +29,20 @@ for example: a function being call inside an object's method.
   person.talk() //Output: Mi names is +
 ```
 ----
-As mention before the **execution context** changes at **execution time** due to the function being call by it's owner object
-Since a function can be call diferent ways (implicit, explicit, event listenes, others.), the same function can have diferent **execution context**, 
+As mention before the execution context changes at execution time due to the function being call by it's owner object.
+Since a function can be call diferent ways (implicit, explicit, event listenes, others.), the same function can have diferent execution context, 
 whichs means a function can have diferents values for **THIS** keyword. 
 
-An easy way to know the value of **THIS** is to determine how the function that contains the **THIS** keyword was call at **execution time**. 
+An easy way to know the value of **THIS** is to determine how the function that contains the **THIS** keyword was call at execution time. 
 It helps to answer the question: Who call the function?
 
-In **execution time** who can call a function to execute can be the Global object (window if we are working on a browser, global object on NodeJS), 
-objects (a define structure with methods and properties), DOM elements, primitives data types (string, boolean, number, bigint, undefined, symbol) 
-being all posibles values of **THIS**.
+In execution time who can call a function to execute are (posibles values of **THIS**): 
+- the **Global object** (window if we are working on a browser, global object on NodeJS).
+- objects (a define structure with methods and properties).
+- DOM elements.
+- primitives data types (string, boolean, number, bigint, undefined, symbol). 
 
-In JavaScript is not posible to alter how the **lexical scope** works, but it is possible to control the **execution context** in which we call our functions. 
+In JavaScript is not posible to alter how the lexical scope works, but it is possible to control the execution context in which we call our functions. 
 We can control and fixed the value of **THIS** with: **clousure**, **call**, **apply**, **bind** and **arrow functions**.
 
 ----
@@ -48,9 +50,15 @@ We can control and fixed the value of **THIS** with: **clousure**, **call**, **a
   function boo(){ 
     return this+13
   }
-  function foo(){ return typeof this}
-  function buzz(){ return this}
-  function too(){ return `${typeof this} 13`}
+  function foo(){ 
+    return typeof this
+  }
+  function buzz(){ 
+    return this
+  }
+  function too(){ 
+    return `${typeof this} 13`
+  }
   var roles = Symbol("rol")
   boo.call(1)// 14
   boo.call("12")// "1213"
