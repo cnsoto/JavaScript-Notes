@@ -65,10 +65,10 @@ We can control and fixed the value of **THIS** with: **clousure**, **call**, **a
 ----
 Now that we know the **THIS** object it is important to understand how it is bind to the scope:
  -Default(window)
- -new
- -Lexical
- -implicit
- -explicit
+ - new
+ - Lexical
+ - implicit
+ - explicit
                
 # **THIS** Default binding
 In the **Global Execution Context**, **THIS** refers to the **Global Object**, if we set **strict mode** on **THIS** value is undefined,
