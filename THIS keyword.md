@@ -107,7 +107,7 @@ Example 2.1 Shows _THIS_ keyword as a reference to the "Global Object".
 In the Example 2.1 the "Uncaught TypeError" is because the object "England" is a private property since the **LET** keyword was used,
 if the **VAR** keyword is use instead then it will possible the access to the property this way.
 
-When _THIS_ is use inside a function its value refers to the "Global Object".
+When using _THIS_ inside a function its value refers to the "Global Object".
 
 ----
 Example 2.2 Show _THIS_'s value inside a function
@@ -122,7 +122,7 @@ Example 2.2 Show _THIS_'s value inside a function
 By default there is no data encapsulation when _THIS_ is use inside a function, you can change the _THIS_'s value outside the function.
 
 ----
-Example 2.3
+Example 2.3 Show how _THIS_'s property value is change outside the function
 ```
   const NumberTeams = function(){
     console.log(this.size)
@@ -136,21 +136,22 @@ Example 2.3
   AddTeam()//23
 ```
 ----
-For correcting this behavior the strict mode is use. A function which has "use strict" in their scope the value _THIS_ will be "undefined" instead 
+For correcting this behavior the "strict mode" is use. A function which has "use strict" in their scope, changes the value of _THIS_ to "undefined" instead 
 of the "window object".
 
 ----
-Example 2.4
+Example 2.4 Show the use of "strict mode" inside a function
 ```
-  const TellAge2 = function(){
+  const NumberTeams = function(){
     'use strict'
-    console.log(this.age)
+    console.log(this.size)
   }
-  TellAge2()// undefined
-  window.age = 22
-  TellAge2()// Uncaught TypeError: Cannot read property 'age' of undefined at TellAge2
+  window.size = 22
+  NumberTeams()// Uncaught TypeError: Cannot read property 'size' of undefined
 ```
 ----
+However even if the "strict mode" is "ON", we get a reference to _THIS_ in the "global scope".
+
 Example 2.5 Shows a way to set the _THIS_ values using the reference "globalThis"
 ```
   this.competition="World Soccer Cup"
@@ -164,8 +165,6 @@ Example 2.5 Shows a way to set the _THIS_ values using the reference "globalThis
   console.log(this.competition)// "America Soccer Cup"
 ```
 ----
-In the above example even do the "strict mode" is "ON", we get a reference to _THIS_ in the "global scope".
-
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
 # 3. _THIS_ new binding
 The **NEW** keyword is use together with **construction functions** (a function use to create object) assigning it to a variable to create objects. In which _THIS_ value is 
