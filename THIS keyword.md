@@ -11,23 +11,22 @@ scope in which a line of code is being executed_) in JavaScript.
 During the **execution time** of one code line of a JavaScript program, the execution context changes taking into consideration the owner object 
 of the function being call and _THIS_ stores a reference to this owner object.
 
-It's important to understand how the value of _THIS_ changes because sometimes it may seem that has one value but it changes to another, 
-for example: a function being call inside an object's method.
+It's important to understand how the value of _THIS_ changes because sometimes it may seem that has one value but it changes to another.
 
 ----
-Example 1.1
+Example 1.1 Shows the value of _THIS_ changing in a inner function inside an object's method
 ```
-  let person = {
-    name:"Carlos",
-    talk: function(){
-      let text= 'Mi name is';
+  let team = {
+    name:"Xolos",
+    sayName: function(){
+      let text= 'The team name is';
       function innerfunction(){
-        console.log(`${text} + ${this.name}`);
+        console.log(`${text} ${this.name}`);
       }
       innerfunction();
     }
   }
-  person.talk() // Mi names is +
+  team.sayName() // My name is 
 ```
 ----
 As mention before the execution context changes at execution time due to the function being call by it's owner object.
@@ -47,34 +46,38 @@ In JavaScript is not posible to alter how the lexical scope works, but it is pos
 We can control and fixed the value of _THIS_ with: **clousure**, **call**, **apply**, **bind** and **arrow functions**.
 
 ----
-Example 1.2
+Example 1.2 Shows how the _THIS_ value changes to the value we set using the "call" function. Also the **Symbol** data type is use as a property.
 ```
-  function boo(){ 
-    return this+13
+  function playerGoalRecord(){ 
+    return this+1
   }
-  function foo(){ 
-    return typeof this
-  }
-  function buzz(){ 
+  function Player(){ 
     return this
   }
-  function too(){ 
-    return `${typeof this} 13`
+  function typeofVersion1(){ 
+    return typeof this
   }
-  var roles = Symbol("rol")
-  boo.call(1)// 14
-  boo.call("12")// "1213"
-  boo.call(true)// 14
-  boo.call(false)// 13
-  boo.call(0.3)// 13.3
-  typeof roles// "symbol"
-  boo.call(roles)// Uncaught TypeError: Cannot convert a Symbol value to a number
-  foo.call(roles)// "object"
-  buzz.call(roles)// Symbol {Symbol(rol)}
-  too.call(roles)// "object 13"
+  function typeofVersion2(){ 
+    return `${typeof this}`
+  }
+  var velocity = Symbol("km/s")
+  let Andrea_Pirlo = new Player();  
+  Andrea_Pirlo[velocity]=2.4
+  
+  console.log(playerGoalRecord.call(1))// 2
+  console.log(playerGoalRecord.call("12"))// "121"
+  console.log(playerGoalRecord.call(true))// 2
+  console.log(playerGoalRecord.call(false))// 1
+  console.log(playerGoalRecord.call(0.3))// 1.3
+  //console.log(playerGoalRecord.call(velocity))// Uncaught TypeError: Cannot convert a Symbol value to a number
+  console.log(Player.call(velocity))// Symbol {Symbol(velocity)}
+  console.log(typeof velocity)// "symbol"
+  console.log(typeofVersion1.call(velocity))// object
+  console.log(typeofVersion2.call(velocity))// "object"
+  console.log(Andrea_Pirlo[velocity])// 2.4
 ```
 ----
-### Now that we know the _THIS_ object it is important to understand how it is bind to the scope: :pushpin:
+### Now lets understand how the _THIS_ object is bind to the scope: :pushpin:
  - [Default(window)](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-default-binding)
  - [new keyword](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-new-binding)
  - [Lexical](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-lexical-context-binding)
@@ -86,45 +89,28 @@ In the **Global Execution Context**, _THIS_ refers to the **Global Object**(Wind
 however we can still refer to the Global Object via the global property **globalThis**.
 
 ----
-Example 2.1
+Example 2.1 Shows _THIS_ keyword as a reference to the "Global Object".
 ```
-  this.hola="hola"
-  function Global(){
-    'use strict'
-    var that=globalThis
-    that.hola="BEBE"
-    return that;
+  this.league='LigaMX'
+  this.USA={
+    league:'MLS'
   }
-  console.log(Global().hola)// "BEBE"
-  console.log(this.hola)// "BEBE"
+  let England = {
+    league:'Premier League'
+  }
+  console.log(window.league)// LigaMX
+  console.log(window.USA.league)// MLS
+  console.log(England.league)// Premier League
+  console.log(this.England.league)// Uncaught TypeError: Cannot read property 'league' of undefined
+```
+----
+In the Example 2.1 the "Uncaught TypeError" is because the object "England" is a private property since the **LET** keyword was used,
+if the **VAR** keyword is use instead then it will possible the access to the property this way.
 
-```
-----
-
-----
-Example 2.2
-```
-  this.table='window table'
-  this.garage={
-    table:'garage table'
-  }
-  let johnsRoom = {
-    table:'johnsTable'
-  }
-  console.log(window.table)// window table
-  console.log(window.garage.table)// garage table
-  console.log(this.garage.table)// garage table
-  console.log(this.johnsRoom.table)// Error (Note 1)
-  /*Note 1
-    the object "johnsRoom" is a private property since the **LET** keyword was used if the **VAR** keyword is use instead then it will
-    possible the access to the property this way.
-  */
-```
-----
-When a function is invoke as a functions _THIS_'s value refers to the **Global Object** (Window).
+When _THIS_ is use inside a function its value refers to the "Global Object".
 
 ----
-Example 2.3
+Example 2.2 Show _THIS_'s value inside a function
 ```
   function test(){
     console.log(this === window)
@@ -133,24 +119,28 @@ Example 2.3
   test()// true
 ``` 
 ----
-When belonging to the **global context** the _THIS_ value can be change outside the function, their's no data encapsuling.
+By default there is no data encapsulation when _THIS_ is use inside a function, you can change the _THIS_'s value outside the function.
+
+----
+Example 2.3
+```
+  const NumberTeams = function(){
+    console.log(this.size)
+  }
+  const AddTeam = function(){
+    console.log(++this.size)
+  }
+  NumberTeams()// undefined
+  window.size = 22
+  NumberTeams()// 22
+  AddTeam()//23
+```
+----
+For correcting this behavior the strict mode is use. A function which has "use strict" in their scope the value _THIS_ will be "undefined" instead 
+of the "window object".
 
 ----
 Example 2.4
-```
-  const TellAge = function(){
-    console.log(this.age)
-  }
-  TellAge()// undefined
-  window.age = 22
-  TellAge()// 22
-```
-----
-For correcting this behavior the strict mode is use. A function which has **'use strict'** in their scope the value _THIS_ will be **undefined** instead 
-of the **window** object.
-
-----
-Example 2.5
 ```
   const TellAge2 = function(){
     'use strict'
@@ -161,6 +151,21 @@ Example 2.5
   TellAge2()// Uncaught TypeError: Cannot read property 'age' of undefined at TellAge2
 ```
 ----
+Example 2.5 Shows a way to set the _THIS_ values using the reference "globalThis"
+```
+  this.competition="World Soccer Cup"
+  function Global(){
+    'use strict'
+    var that=globalThis
+    that.competition="America Soccer Cup"
+    return that;
+  }
+  console.log(Global().competition)// "America Soccer Cup"
+  console.log(this.competition)// "America Soccer Cup"
+```
+----
+In the above example even do the "strict mode" is "ON", we get a reference to _THIS_ in the "global scope".
+
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
 # 3. _THIS_ new binding
 The **NEW** keyword is use together with **construction functions** (a function use to create object) assigning it to a variable to create objects. In which _THIS_ value is 
