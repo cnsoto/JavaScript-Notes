@@ -167,24 +167,24 @@ Example 2.5 Shows a way to set the _THIS_ values using the reference "globalThis
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
 # 3. _THIS_ new binding
-The **NEW** keyword is use together with **construction functions** (a function use to create object) assigning it to a variable to create objects. In which _THIS_ value is 
+The **NEW** keyword is use together with **construction functions** (a function use to create object) assigning it to a variable to create objects. In which _THIS_ value
 refers to the new created instance.
 
 ----
-Example 3.1
+Example 3.1 Shows how two diferent objects using the "new" keyword and a "construction funcion"
 ```
-  const Person = function(fn, ln){
-    this.first_name = fn;
-    this.last_name = ln;
-    this.displayName = function(){
-      console.log(`Name: ${this.first_name} ${this.last_name}`)
+  const Team = function(name, league){
+    this.name = fn;
+    this.league = ln;
+    this.info = function(){
+      console.log(`Team: ${this.name}, League: ${this.league}`)
     }
   }
-  let mom = new Person("Joceline","Aguilar")
-  let dad = new Person("Noel", "Soto")
-  mom.displayName()//Name: Joceline Aguilar
-  dad.displayName()//Name: Noel Soto 
-  mom===dad// false
+  let chelsea = new Team("Chelsea","Premier League")
+  let milan = new Person("AC Milan", "Serie A")
+  chelsea.info()// Team: Chelsea, League: Premier League
+  milan.info()/ / Team: AC Milan, League: Serie A
+  chelsea===milan// false
 ```
 ----
 
