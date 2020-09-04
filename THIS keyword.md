@@ -26,7 +26,7 @@ Example 1.1 Shows the value of _THIS_ changing in a inner function inside an obj
       innerfunction();
     }
   }
-  team.sayName() // My name is 
+  team.sayName() // The team name is 
 ```
 ----
 As mention before the execution context changes at execution time due to the function being call by it's owner object.
