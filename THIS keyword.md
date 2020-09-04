@@ -174,22 +174,22 @@ refers to the new created instance.
 Example 3.1 Shows how two diferent objects using the "new" keyword and a "construction funcion"
 ```
   const Team = function(name, league){
-    this.name = fn;
-    this.league = ln;
+    this.name = name;
+    this.league = league;
     this.info = function(){
       console.log(`Team: ${this.name}, League: ${this.league}`)
     }
   }
   let chelsea = new Team("Chelsea","Premier League")
-  let milan = new Person("AC Milan", "Serie A")
+  let milan = new Team("AC Milan", "Serie A")
   chelsea.info()// Team: Chelsea, League: Premier League
-  milan.info()/ / Team: AC Milan, League: Serie A
+  milan.info()// Team: AC Milan, League: Serie A
   chelsea===milan// false
 ```
 ----
 
 ----
-Example 3.2
+Example 3.2 Shows the creation of an object using the prototype chain
 ```
   'use strict'
   const createRoom=function(name){
@@ -207,7 +207,7 @@ Example 3.2
 ----
 
 ----
-Example 3.3
+Example 3.3 Shows how a construction function can modify the object using the _return_ keyword
 ```
   function C(){
     this.a=37
@@ -225,7 +225,7 @@ Example 3.3
 An object constructor function has the problem that if you omit the new keyword the behavior is modify and doesn't show any errors.
 
 ----
-Example 3.4
+Example 3.4 Shows how the construction function modify its behavior when the _new_ keyword is missing
 ```
   var r="red"
   function Color(r,g,b){
@@ -243,7 +243,7 @@ Example 3.4
 A better approch to handdle this data protection integrety issue one solution would be.
 
 ----
-Example 3.5
+Example 3.5 Shows a better handling construction function when the _new_ keyword is missing
 ```
   var r="red"
   function Color(r,g,b){
