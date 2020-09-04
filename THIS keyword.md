@@ -187,6 +187,8 @@ Example 3.1 Shows how two diferent objects using the "new" keyword and a "constr
   chelsea===milan// false
 ```
 ----
+When creating an object using a "construction function" each object is unique as seen on example 3.1. Another way
+to create new object is adding the construction function to the "propotype chain"
 
 ----
 Example 3.2 Shows the creation of an object using the prototype chain
@@ -222,7 +224,7 @@ Example 3.3 Shows how a construction function can modify the object using the _r
   console.log(C2.a)// 30 
 ```
 ----
-An object constructor function has the problem that if you omit the new keyword the behavior is modify and doesn't show any errors.
+An object constructor function has the problem that if you omit the new keyword the behavior is mdify and doesn't show any errors.
 
 ----
 Example 3.4 Shows how the construction function modify its behavior when the _new_ keyword is missing
