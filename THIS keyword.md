@@ -941,18 +941,18 @@ Example 6.5
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
 # 7. References
-[reference 1](https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8)<br/>
-[reference 2](https://medium.com/@osmanakar_65575/javascript-lexical-and-dynamic-scoping-72c17e4476dd)<br/> 
-[reference 3](https://spin.atomicobject.com/2014/10/20/javascript-scope-closures/)<br/>
-[reference 4](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/this)<br/>
-[reference 5](https://www.geeksforgeeks.org/javascript-this-identifier/)<br/>
-[reference 6](https://masteringjs.io/tutorials/fundamentals/this)<br/>
-[reference 7](https://yeisondaza.com/entendiendo-this-javascript)<br/>
-[reference 8](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)<br/>
-[reference 9](http://adripofjavascript.com/blog/drips/dealing-with-the-dangers-of-this-in-constructors.html)<br/>
-[reference 10](https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8)<br/>
-[reference 11](https://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/)<br/>
-[reference 12](https://www.youtube.com/watch?v=NV9sHLX-jZU&t=506s)<br/>
-[reference 13](https://www.youtube.com/watch?v=Pv9flm-80vM&t=66s)<br/>
+[https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8](https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8)<br/>
+[https://medium.com/@osmanakar_65575/javascript-lexical-and-dynamic-scoping-72c17e4476dd](https://medium.com/@osmanakar_65575/javascript-lexical-and-dynamic-scoping-72c17e4476dd)<br/> 
+[https://spin.atomicobject.com/2014/10/20/javascript-scope-closures/](https://spin.atomicobject.com/2014/10/20/javascript-scope-closures/)<br/>
+[https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/this](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/this)<br/>
+[https://www.geeksforgeeks.org/javascript-this-identifier/](https://www.geeksforgeeks.org/javascript-this-identifier/)<br/>
+[https://masteringjs.io/tutorials/fundamentals/this](https://masteringjs.io/tutorials/fundamentals/this)<br/>
+[https://yeisondaza.com/entendiendo-this-javascript](https://yeisondaza.com/entendiendo-this-javascript)<br/>
+[https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)<br/>
+[http://adripofjavascript.com/blog/drips/dealing-with-the-dangers-of-this-in-constructors.html](http://adripofjavascript.com/blog/drips/dealing-with-the-dangers-of-this-in-constructors.html)<br/>
+[https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8](https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8)<br/>
+[https://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/](https://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/)<br/>
+[https://www.youtube.com/watch?v=NV9sHLX-jZU&t=506s](https://www.youtube.com/watch?v=NV9sHLX-jZU&t=506s)<br/>
+[https://www.youtube.com/watch?v=Pv9flm-80vM&t=66s](https://www.youtube.com/watch?v=Pv9flm-80vM&t=66s)<br/>
 
 [return :point_up:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#introduction)
