@@ -942,17 +942,29 @@ Example 6.5
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
 # 7. References
 [reference 1](https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8)
+
 [reference 2](https://medium.com/@osmanakar_65575/javascript-lexical-and-dynamic-scoping-72c17e4476dd)
+
 [reference 3](https://spin.atomicobject.com/2014/10/20/javascript-scope-closures/)
+
 [reference 4](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/this)
+
 [reference 5](https://www.geeksforgeeks.org/javascript-this-identifier/)
+
 [reference 6](https://masteringjs.io/tutorials/fundamentals/this)
+
 [reference 7](https://yeisondaza.com/entendiendo-this-javascript)
+
 [reference 8](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)
+
 [reference 9](http://adripofjavascript.com/blog/drips/dealing-with-the-dangers-of-this-in-constructors.html)
+
 [reference 10](https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8)
+
 [reference 11](https://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/)
+
 [reference 12](https://www.youtube.com/watch?v=NV9sHLX-jZU&t=506s)
+
 [reference 13](https://www.youtube.com/watch?v=Pv9flm-80vM&t=66s)
 
 [return :point_up:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#introduction)
