@@ -942,7 +942,6 @@ Example 6.5
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
 # 7. References
 [reference 1](https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8)
-
 [reference 2](https://medium.com/@osmanakar_65575/javascript-lexical-and-dynamic-scoping-72c17e4476dd)
 
 [reference 3](https://spin.atomicobject.com/2014/10/20/javascript-scope-closures/)
