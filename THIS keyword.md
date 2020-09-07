@@ -80,9 +80,9 @@ Example 1.2 Shows how the _THIS_ value changes to the value we set using the "ca
 ### Now lets understand how the _THIS_ object is bind to the scope: :pushpin:
  - [Default(window)](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#2-this-default-binding)
  - [new keyword](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#3-this-new-binding)
- - [Lexical](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-lexical-context-binding)
- - [implicit](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-implicit-binding)
- - [explicit](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-explicit-binding)
+ - [Lexical](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#4-this-lexical-context-binding)
+ - [implicit](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#5-this-implicit-binding)
+ - [explicit](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#6-this-explicit-binding)
                
 # 2. _THIS_ Default binding
 In the **Global Execution Context**, _THIS_ refers to the **Global Object**(Window), if we set **strict mode** "ON", _THIS_ value is undefined,
