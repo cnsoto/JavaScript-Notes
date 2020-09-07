@@ -555,10 +555,10 @@ Example 4.10 Shows how to set _THIS_ using the "arrow functions" in ES6 classes.
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
 # 5. _THIS_ Implicit binding           
-_THIS_ inside a method gets it's value from the inmediate object.
+The _THIS_ keyword is not very useful in functions (only in constructor functions), where they really shine is when use with objects. _THIS_ inside a method gets it's value from the inmediate object.
 
 ----
-Example 5.1
+Example 5.1 Shows _THIS_ inside a method
 ```  
   function Reed(){
     return this.prop;
@@ -574,13 +574,12 @@ Example 5.1
   console.log(op.B.Reed())
 ```  
 ----
-_THIS_ inside de Prototype chain (Inheritence)
 In the following example, the "Object p" doesn't possess the "method f", when "method f" is call the search starts at "Object p" and after no
 find it the search goes to its "Prototype o". If the "method f" is found in the "object o" chain prototype then _THIS_'s value 
 it will be "Object p" as is the method belongs to the "Object p".
 
 ----
-Example 5.2
+Example 5.2 Shows _THIS_ inside de Prototype chain (Inheritence)
 ```
   var o={
     f:function(){return this.a+ this.b}
@@ -591,11 +590,10 @@ Example 5.2
   console.log(p.f())// 5
 ```  
 ----
-_THIS_ in "GETTER" or "SETTER"
-A function use as a "GETTER" or "SETTER" has its _THIS_ value bind to the "Object" from which the property was stablish.
+Another use of _THIS_ in object is when a function use as a "GETTER" or "SETTER". The function has its _THIS_ value bind to the "Object" from which the property was stablish.
 
 ----
-Example 5.3
+Example 5.3 Shows _THIS_ in "GETTER" function
 ```
   function modulus(){
     return Math.sqt(this.re*this.re + this.im*this.im)
@@ -610,7 +608,7 @@ Example 5.3
   Object.defineProperty(O, 'modulus',{get: modulus, enumerable:true, configurable:true})
   console.log(O.phase, O.modulus)// -0.7853981633974483 1.4142135623730951
   /* Note
-    GET and SET are defined as funcstions but they are use as properties.
+    GET and SET are defined as functions but they are use as properties.
   */
 ```  
 ----
@@ -712,7 +710,6 @@ Example 5.7
   ana.mother.talk()// claire
 ```  
 ----
-
 When using _THIS_ inside a method is referring to the object which the method belongs. _THIS_ object can call others methods and properties
 which the objects owns.
 
@@ -735,12 +732,10 @@ Example 5.8
   this.garage.cleanTable()// cleaning garage table
 ```  
 ----
-
-_THIS_ inside of classes
 When _THIS_ is use inside a method's class it refers to the object's instance from which the method was invoke.
 
 ----
-Example 5.9
+Example 5.9 Shows _THIS_ inside of classes
 ```
   class createRoom{
     constructor(name){
