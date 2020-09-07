@@ -732,80 +732,40 @@ Call function
 In this method the arguments are pass individually and the first parameter define a reference to _THIS_
 
 ----
-Example 6.1
+Example 6.1 Shows the use of the "call" function
 ```
+  'use strict'
+  let languages=['English','Spanish','French']
   const talk = function(l1, l2, l3){
     console.log(`My name is ${this.name} and I speak ${l1}, ${l2} and ${l3}`)
   }
-  let barbie = {
+  let student1 = {
     name: 'Barbie',
-    edad: 27
-  }
-  let languages=['English','Spanish','French']
-  talk.call(barbie, languages[0], language[1], language[2])
-  const Person = function(fn, ln){
-    this.first_name = fn;
-    this.last_name = ln;
-    this.displayName = function(){
-      console.log(`Name: ${this.first_name} ${this.last_name}`)
+    edad: 27,
+    SayComment: function(l1){
+      let younger = this.edad - 5;
+      console.log(`When ${this.name} was ${younger} years old she learn ${l1}`)
     }
   }
-  let person = new Person("John", "Reed");
-  let person2 = new Person("Paul", "Adams");
-  person.displayName()// Name: John Reed
-  person2.displayName()// Name: Paul Adams
-  person2.displayName.call(person);// Name: John Reed
-  function hello(thing){
-    console.log(`${this} says hello ${thing}`)
+  let student2 = {
+    name: 'Talia',
+    edad: 30,
+    SayComment: function(){
+      let younger = this.edad-15
+      console.log(`I like pizza since i was ${younger}`)
+    }
   }
-  hello.call("Yehuda", "world")// Yehuda says hello world
-  var person1 = {
-    name: 'Angelina',
-    lastName: 'Jolie',
-    birtDay: '04/06/1975',
-    lastMovie: 'The Tourist'
-  }
-  var person2 = {
-    name: 'Scarlett',
-    lastName: 'Johansson',
-    birthDay: '22/11/1984',
-    lastMovie: 'We bought a Zoo'
-  }
-  var printName = function(){
-    console.log(`${this.name} ${this.lastName}`)
-  }
-  printName.call(person1)// Angelina Jolie
-  printName.call(person2)// Scarlett Johanson
-  printName.bind(person2)()// Scarlett Johanson
-  printName.bind(person1)()// Angelina Jolie
-```  
-----
 
-----
-Example 6.2
-```
-  'use strict'
-  this.table='window table'
-  this.garage={
-    table:'garage table'
-  }
-  let johnsgarage={
-    table:'Johns Table'
-  }
-  const cleanTable=function(soap){
-    console.log(`cleaning ${this.table} using ${soap}`)
-  }
-  cleanTable.call(this,'some soap')
-  cleanTable.call(this.garage.'some soap')
-  cleanTable.call(johnsgarage.'some soap')  
+  talk.call(student1, languages[0], languages[1], languages[2])// My name is Barbie and I speak English, Spanish and French
+  student1.SayComment.call(student2, languages[1])// When Talia was 25 years old she learn Spanish
 ```  
 ----
 Apply function
-In this method the first method let us defined the deference to _THIS_, and second parameter is an array passing the function's arguments.
+In this method the first method let us defined the reference to _THIS_, and second parameter is an array passing the function's arguments.
 (Dispatcher pattern)
 
 ----
-Example 6.3
+Example 6.2 Shows the use of the "apply" function using dispatcher pattern
 ```
   let person1 = {
     name: 'Angelina',
@@ -831,18 +791,17 @@ Example 6.3
   const dispatch = function(object, method, args){
     method.apply(object, args)
   }
-  dispatch(person1, printName);// 
-  dispatch(person2, updatePerson, ['Scarlett','Johanson','22/11/1982','The Avengers'])// 
-  dispatch(person2, printName);//
+  dispatch(person1, printName);// Angelina Jolie's last movie was The Tourist
+  dispatch(person2, updatePerson, ['Scarlett','Johanson','22/11/1982','The Avengers'])
+  dispatch(person2, printName);// Scarlett Johanson's last movie was The Avengers
 ```  
 ----
 Bind function
-All functions can call this function since in JavaScript function are consider a special type of "Object".
 In this method the first parameter is for defining the reference to _THIS_, all other arguments are pass individually. **BIND** generates
 a new function fixing _THIS_ value as is was in the **lexical context**.
 
 ----
-Example 6.4
+Example 6.3 Shows the use of the "bind" function 
 ```
   function Person(fn, ln){
     this.first_name = fn;
@@ -859,10 +818,10 @@ Example 6.4
   personDisplay()// Name: Paul Adams
 ```  
 ----
-Building our own Bind function
+An extra way to bind a function is to building our own function
 
 ----
-Example 6.5
+Example 6.4 Shows a made "bind" function using the "apply" function
 ```
   const person={
     text:"Greeting to all",
