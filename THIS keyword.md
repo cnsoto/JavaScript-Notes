@@ -389,10 +389,10 @@ Example 4.5 Shows how to set _THIS_ to the value we want using the "bind" method
 ----
 C) Arrow functions
 Unlike regular functions, **arrow functions** don't have their own _THIS_ keyword, it uses the **OUTTER SCOPE**'s _THIS_ value. In the next
-example the "innefunction" takes the "outterfunction"'s _THIS_ which was set with the **CALL** function.
+example the "innerfunction" takes the "outterfunction"'s _THIS_ which was set with the **CALL** function.
 
 ----
-Example 4.6
+Example 4.6 Shows how to set _THIS_ using the "arrow functions".
 ```
   'use strict'
   this.table='window table'
@@ -433,9 +433,10 @@ Example 4.6
   
 ```  
 ----
+Now we use ES6 classes to elaborate the examples.
 
 ----
-Example 4.7
+Example 4.7 Shows _THIS_'s value in ES6 classes
 ```  
   class NameField{
     constructor(name){
@@ -465,7 +466,7 @@ the _THIS_ keyword, due to the method being added to the class. This means that 
 _THIS_ value is via 'Event Listener'.
 
 ----
-Example 4.8
+Example 4.8 Shows the method "addName" using the _THIS_ object in ES6 classes.
 ```  
   class NameField{
     constructor(name){
@@ -497,7 +498,7 @@ button is press _THIS_ value changes because the one "who call the function" was
 'NameGenerator'. And the button doesn't has the properties "name" and "counter". We can correct this error using the **BIND** function.
 
 ----
-Example 4.9
+Example 4.9 Shows how to set the _THIS_ value using "bind" method in ES6 classes
 ```  
   class NameField{
     constructor(name){
@@ -526,7 +527,7 @@ Example 4.9
 In the next example use arrow function to keep the lexical context of _THIS_.
 
 ----
-Example 4.10
+Example 4.10 Shows how to set _THIS_ using the "arrow functions" in ES6 classes.
 ```  
   class NameField{
     constructor(name){
