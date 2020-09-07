@@ -854,4 +854,4 @@ Example 6.4 Shows a made "bind" function using the "apply" function
 [https://www.youtube.com/watch?v=NV9sHLX-jZU&t=506s](https://www.youtube.com/watch?v=NV9sHLX-jZU&t=506s)<br/>
 [https://www.youtube.com/watch?v=Pv9flm-80vM&t=66s](https://www.youtube.com/watch?v=Pv9flm-80vM&t=66s)<br/>
 
-[return :point_up:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#introduction)
+[return :point_up:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#1-introduction)
