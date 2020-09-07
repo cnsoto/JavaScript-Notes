@@ -165,7 +165,7 @@ Example 2.5 Shows a way to set the _THIS_ values using the reference "globalThis
   console.log(this.competition)// "America Soccer Cup"
 ```
 ----
-[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
+[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-lets-understand-how-the-this-object-is-bind-to-the-scope-pushpin)
 # 3. _THIS_ new binding
 The **NEW** keyword is use together with **construction functions** (a function use to create object) assigning it to a variable to create objects. In which _THIS_ value
 refers to the new created instance.
@@ -265,7 +265,7 @@ Example 3.5 Shows a better handling construction function when the _new_ keyword
   console.log(colors2.r)//Uncaught Error: Missing new keyword at Color
 ```  
 ----
-[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
+[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-lets-understand-how-the-this-object-is-bind-to-the-scope-pushpin)
 # 4. _THIS_ Lexical Context binding
 By lexical context we mean to the value we set _THIS_ to in code not to the value it has at execution time.
 
@@ -553,7 +553,7 @@ Example 4.10 Shows how to set _THIS_ using the "arrow functions" in ES6 classes.
   const test = new NameGenerator();
 ```  
 ----
-[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
+[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-lets-understand-how-the-this-object-is-bind-to-the-scope-pushpin)
 # 5. _THIS_ Implicit binding           
 The _THIS_ keyword is not very useful in functions, where they really shine is when use with objects. _THIS_ inside a method gets it's value from the inmediate object.
 
@@ -723,7 +723,7 @@ Example 5.8 Shows _THIS_ inside of ES6 classes
   jill.cleanTable('Soap')// cleaning jill's table using Soap
 ```  
 ----
-[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
+[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-lets-understand-how-the-this-object-is-bind-to-the-scope-pushpin)
 # 6. _THIS_ Explicit binding
 Functions in JavaScript are a special type of Object (Function.Prototype) and as all Objects it has methods: **call**, **apply** and **bind**. These functions set the
 function context in other words change the function owner and there for the _THIS_ value. 
@@ -838,7 +838,7 @@ Example 6.4 Shows a made "bind" function using the "apply" function
   newBinding()//Greeting to all
 ```  
 ----
-[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
+[return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-lets-understand-how-the-this-object-is-bind-to-the-scope-pushpin)
 # 7. References
 [https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8](https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8)<br/>
 [https://medium.com/@osmanakar_65575/javascript-lexical-and-dynamic-scoping-72c17e4476dd](https://medium.com/@osmanakar_65575/javascript-lexical-and-dynamic-scoping-72c17e4476dd)<br/> 
