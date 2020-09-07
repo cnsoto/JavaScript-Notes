@@ -266,9 +266,13 @@ Example 3.5 Shows a better handling construction function when the _new_ keyword
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
 # 4. _THIS_ Lexical Context binding
+By lexical context we mean to the value we set _THIS_ to in code not to the value it has at execution time.
+
+The regular functions that uses _THIS_ keyword its owner is the global object (window), except if the
+function uses "strict mode" in which case is set to "undefined". 
 
 ----
-Example 4.1
+Example 4.1 Show how the use of "strict mode" affects _THIS_'s value 
 ```  
   function f1(){
     return this
@@ -279,16 +283,14 @@ Example 4.1
   }
   console.log(f1()===window)// true
   console.log(f2()===undefined)// true
-  console.log(f1()===f2())// false
 ```  
 ----
-In regular functions every new function defined has its own _THIS_ keyword value, which owner is the global object (window), except if the
-function uses "strict mode" in which case is set to "undefined". The _THIS_ keyword is not very useful in functions, where they really shine
-is when is use with objects.
+When using _THIS_ in an inner function each of the functions (inner and outter function) possess its own relation with _THIS_. And by default _THIS_'s value is the "Global Object".
 
 ----
-Example 4.2
+Example 4.2 Shows how the inner function is calling a property of _THIS_.
 ```
+  var name = 'Joceline'
   var myApp = function(){
     var name = 'World'
     var sayHello = function(){
@@ -296,40 +298,14 @@ Example 4.2
     }
     sayHello()
   }
-  myApp()// Hello
-  name = 'Joceline'
-  var myApp2 = function(){
-    var name = 'Carlos Noel'
-    var sayHello = function(){
-      console.log('Hello, ' + this.name)
-    }
-    sayHello();
-  }
-  myApp2()// Hello Joceline
-  function multiply(p, q, callback){
-    callback(p*q)
-  }
-  let user = {
-    a:2,
-    b:3,
-    findMultiply: function(){
-      multiply(this.a, this.b, function(total){
-        console.log(total)
-        console.log(this===window)
-      })
-    }
-  }
-  user.findMultiply();// true (Note 1)
-  /*Note 1*
-    Since the "callback" is invoke like a simple function call inside a function, **THIS** refers to the Global Object.
-    **THIS** inside a function
-  */
-```  
-----
-Using _THIS_ in a function with 'strict mode'
+  myApp()// Hello Joceline
+```
+---
+
+In example 4.2 _THIS_ is bind to the "global object" (Window) and not to the outter function. As we mention before when we use "strict mode" is to not allow the use of _THIS_ with out it proper setting.
 
 ----
-Example 4.3
+Example 4.3 Shows how "strict mode" permeates to inner functions scope
 ```
   'use strict'
   this.table='window table'
@@ -341,15 +317,14 @@ Example 4.3
     innerfunction()
   }
   cleanTable();// cleaning undefined THIS value: undefined
-  /* Note
-    The 'strict mode' permeates to inner functions scope
-  */
 ```  
 ----
-Using _THIS_ in an inner function
-Each function possess its own relation with _THIS_ even inner functions. And by default _THIS_'s value is the "Global Object".
+The _THIS_ keyword is not very useful in functions, where they really shine is when is use with objects.
+
+
 In the next example, we bind the _THIS_ value with the **CALL** function but then its change to "undefined" (because the "strict mode" is "ON")
 in the inner function. This is an unwanted behavior. (When a function changes the _THIS_ value is know as a function loosing its context).
+
 
 ----
 Example 4.4
@@ -455,6 +430,26 @@ Example 4.7
   outtercleanTable.call(this,'some soap');// cleaning window table some soap
   outtercleanTable.call(this.garage,'some soap');// cleaning garage table some soap 
   outtercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap 
+  
+  function multiply(p, q, callback){
+    callback(p*q)
+  }
+  let user = {
+    a:2,
+    b:3,
+    findMultiply: function(){
+      multiply(this.a, this.b, function(total){
+        console.log(total)
+        console.log(this===window)
+      })
+    }
+  }
+  user.findMultiply();// true (Note 1)
+  /*Note 1*
+    Since the "callback" is invoke like a simple function call inside a function, **THIS** refers to the Global Object.
+    **THIS** inside a function
+  */
+  
 ```  
 ----
 
