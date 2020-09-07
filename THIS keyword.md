@@ -78,7 +78,7 @@ Example 1.2 Shows how the _THIS_ value changes to the value we set using the "ca
 ```
 ----
 ### Now lets understand how the _THIS_ object is bind to the scope: :pushpin:
- - [Default(window)](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-default-binding)
+ - [Default(window)](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#2-this-default-binding)
  - [new keyword](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-new-binding)
  - [Lexical](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-lexical-context-binding)
  - [implicit](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#this-implicit-binding)
