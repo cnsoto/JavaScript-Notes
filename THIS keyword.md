@@ -207,9 +207,10 @@ Example 3.2 Shows the creation of an object using the prototype chain
   johnsRoom.cleanTable("Zest's soap")// cleaning john's table using Zest's soap
 ```
 ----
+Another interesting way to create an object is returning an object using a ES6 Object literals feature, canceling the methods and the properties definition made using _THIS_ in the body of the constructor function.
 
 ----
-Example 3.3 Shows how a construction function can modify the object using the _return_ keyword
+Example 3.3 Shows how a constructor function can modify the object using the _return_ keyword
 ```
   function C(){
     this.a=37
@@ -224,10 +225,10 @@ Example 3.3 Shows how a construction function can modify the object using the _r
   console.log(C2.a)// 30 
 ```
 ----
-An object constructor function has the problem that if you omit the new keyword the behavior is mdify and doesn't show any errors.
+An object constructor function has the problem that if you omit the new keyword the behavior is modify and doesn't show any errors.
 
 ----
-Example 3.4 Shows how the construction function modify its behavior when the _new_ keyword is missing
+Example 3.4 Shows how the constructor function modify its behavior when the _new_ keyword is missing
 ```
   var r="red"
   function Color(r,g,b){
@@ -242,7 +243,7 @@ Example 3.4 Shows how the construction function modify its behavior when the _ne
   console.log(colors2.r)//Uncaught TypeError: Cannot read property 'r' of undefined
 ```  
 ----
-A better approch to handdle this data protection integrety issue one solution would be.
+A better approch to handdle this data protection integrety issue would be.
 
 ----
 Example 3.5 Shows a better handling construction function when the _new_ keyword is missing
@@ -285,7 +286,7 @@ Example 4.1 Show how the use of "strict mode" affects _THIS_'s value
   console.log(f2()===undefined)// true
 ```  
 ----
-When using _THIS_ in an inner function each of the functions (inner and outter function) possess its own relation with _THIS_. And by default _THIS_'s value is the "Global Object".
+When using _THIS_ in an inner function each of the functions (inner and outter function) has its own relation with _THIS_. And by default _THIS_'s value is the "Global Object".
 
 ----
 Example 4.2 Shows how the inner function is calling a property of _THIS_.
@@ -301,33 +302,13 @@ Example 4.2 Shows how the inner function is calling a property of _THIS_.
   myApp()// Hello Joceline
 ```
 ---
-
-In example 4.2 _THIS_ is bind to the "global object" (Window) and not to the outter function. As we mention before when we use "strict mode" is to not allow the use of _THIS_ with out it proper setting.
-
-----
-Example 4.3 Shows how "strict mode" permeates to inner functions scope
-```
-  'use strict'
-  this.table='window table'
-  const cleanTable = function(){
-    console.log(`cleaning ${this}`)
-    function innerfunction(){
-      console.log(`THIS value: ${this} `)
-    }
-    innerfunction()
-  }
-  cleanTable();// cleaning undefined THIS value: undefined
-```  
-----
-The _THIS_ keyword is not very useful in functions, where they really shine is when is use with objects.
-
+In example 4.2 _THIS_ is bind to the "global object" (Window) and not to the outter function. As we mention before when we use "strict mode" is to not allow the use of _THIS_ with out it proper setting. 
 
 In the next example, we bind the _THIS_ value with the **CALL** function but then its change to "undefined" (because the "strict mode" is "ON")
 in the inner function. This is an unwanted behavior. (When a function changes the _THIS_ value is know as a function loosing its context).
 
-
 ----
-Example 4.4
+Example 4.3 Shows how "strict mode" permeates to inner functions scope
 ```
   'use strict'
   this.table='window table'
@@ -349,7 +330,7 @@ Example 4.4
 ```  
 ----
 
-For the example above where are three solutions:
+For the example 4.3 there are three solutions:
   -A) closures
   -B) call, apply, and bind
   -C) arrow functions
@@ -357,7 +338,7 @@ For the example above where are three solutions:
 A) _THIS_ with closures is not a very good solution
 
 ----
-Example 4.5
+Example 4.4 Shows how to set _THIS_ to the value we want assigning it to a new variable.
 ```
   'use strict'
   this.table='window table'
@@ -382,7 +363,7 @@ Example 4.5
 B) **CALL**, **APPLY** and **BIND** approch
 
 ----
-Example 4.6
+Example 4.5 Shows how to set _THIS_ to the value we want using the "bind" method. 
 ```
   'use strict'
   this.table='window table'
@@ -411,7 +392,7 @@ Unlike regular functions, **arrow functions** don't have their own _THIS_ keywor
 example the "innefunction" takes the "outterfunction"'s _THIS_ which was set with the **CALL** function.
 
 ----
-Example 4.7
+Example 4.6
 ```
   'use strict'
   this.table='window table'
@@ -454,7 +435,7 @@ Example 4.7
 ----
 
 ----
-Example 4.8
+Example 4.7
 ```  
   class NameField{
     constructor(name){
@@ -484,7 +465,7 @@ the _THIS_ keyword, due to the method being added to the class. This means that 
 _THIS_ value is via 'Event Listener'.
 
 ----
-Example 4.9
+Example 4.8
 ```  
   class NameField{
     constructor(name){
@@ -511,12 +492,12 @@ Example 4.9
 ```  
 ----
 In the example above when we press the "button" it show us the "Cannot read ..." message because the "button" modifies the _THIS_ value.
-In the class's constructor lexical scope _THIS_ refers to the class an that's why it was able to find the "addName" method, but when the 
+In the class's constructor lexical scope _THIS_ refers to the class and that's why it was able to find the "addName" method, but when the 
 button is press _THIS_ value changes because the one "who call the function" was the button not the object instance of the class 
 'NameGenerator'. And the button doesn't has the properties "name" and "counter". We can correct this error using the **BIND** function.
 
 ----
-Example 4.10
+Example 4.9
 ```  
   class NameField{
     constructor(name){
@@ -545,7 +526,7 @@ Example 4.10
 In the next example use arrow function to keep the lexical context of _THIS_.
 
 ----
-Example 4.11
+Example 4.10
 ```  
   class NameField{
     constructor(name){
