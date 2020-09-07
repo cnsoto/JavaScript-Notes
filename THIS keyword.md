@@ -286,7 +286,7 @@ Example 4.1 Show how the use of "strict mode" affects _THIS_'s value
   console.log(f2()===undefined)// true
 ```  
 ----
-When using _THIS_ in an inner function each of the functions (inner and outter function) has its own relation with _THIS_. And by default _THIS_'s value is the "Global Object".
+When using _THIS_ in an inner function each of the functions (inner and outer function) has its own relation with _THIS_. And by default _THIS_'s value is the "Global Object".
 
 ----
 Example 4.2 Shows how the inner function is calling a property of _THIS_.
@@ -302,7 +302,7 @@ Example 4.2 Shows how the inner function is calling a property of _THIS_.
   myApp()// Hello Joceline
 ```
 ---
-In example 4.2 _THIS_ is bind to the "global object" (Window) and not to the outter function. As we mention before when we use "strict mode" is to not allow the use of _THIS_ with out it proper setting. 
+In example 4.2 _THIS_ is bind to the "global object" (Window) and not to the outer function. As we mention before when we use "strict mode" is to not allow the use of _THIS_ with out it proper setting. 
 
 In the next example, we bind the _THIS_ value with the **CALL** function but then its change to "undefined" (because the "strict mode" is "ON")
 in the inner function. This is an unwanted behavior. (When a function changes the _THIS_ value is know as a function loosing its context).
@@ -318,15 +318,15 @@ Example 4.3 Shows how "strict mode" permeates to inner functions scope
   let johnsRoom={
     table:'Johns Table'
   }
-  const outtercleanTable = function(soap){
+  const outercleanTable = function(soap){
     const innerfunction = function(_soap){
           console.log(`cleaning ${this.table} ${_soap}`)
     }
     innerfunction(soap);
   }
-  outtercleanTable.call(this,'some soap');// Uncaught TypeError: Cannot read property 'table' of undefined
-  outtercleanTable.call(this.garage,'some soap');// Uncaught TypeError: Cannot read property 'table' of undefined
-  outtercleanTable.call(johnsRoom,'some soap');// Uncaught TypeError: Cannot read property 'table' of undefined
+  outercleanTable.call(this,'some soap');// Uncaught TypeError: Cannot read property 'table' of undefined
+  outercleanTable.call(this.garage,'some soap');// Uncaught TypeError: Cannot read property 'table' of undefined
+  outercleanTable.call(johnsRoom,'some soap');// Uncaught TypeError: Cannot read property 'table' of undefined
 ```  
 ----
 
@@ -348,16 +348,16 @@ Example 4.4 Shows how to set _THIS_ to the value we want assigning it to a new v
   let johnsRoom={
     table:'Johns Table'
   }
-  const outtercleanTable = function(soap){
+  const outercleanTable = function(soap){
     let that = this
     const innerfunction = function(_soap){
           console.log(`cleaning ${that.table} ${_soap}`)
     }
     innerfunction(soap);
   }
-  outtercleanTable.call(this,'some soap');// cleaning window table some soap
-  outtercleanTable.call(this.garage,'some soap');// cleaning garage table some soap
-  outtercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap
+  outercleanTable.call(this,'some soap');// cleaning window table some soap
+  outercleanTable.call(this.garage,'some soap');// cleaning garage table some soap
+  outercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap
 ```  
 ----
 B) **CALL**, **APPLY** and **BIND** approch
@@ -373,7 +373,7 @@ Example 4.5 Shows how to set _THIS_ to the value we want using the "bind" method
   let johnsRoom={
     table:'Johns Table'
   }
-  const outtercleanTable = function(soap){
+  const outercleanTable = function(soap){
     const innerfunction = function(_soap){
           console.log(`cleaning ${this.table} ${_soap}`)
     }    
@@ -382,14 +382,14 @@ Example 4.5 Shows how to set _THIS_ to the value we want using the "bind" method
     innerfunction.call(this,soap);
     innerfunction.apply(this,[soap]);
   }
-  outtercleanTable.call(this,'some soap');// cleaning window table some soap cleaning window table some soap cleaning window table some soap
-  outtercleanTable.call(this.garage,'some soap');// cleaning garage table some soap cleaning garage table some soap cleaning garage table some soap
-  outtercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap cleaning Johns Table some soap cleaning Johns Table some soap
+  outercleanTable.call(this,'some soap');// cleaning window table some soap cleaning window table some soap cleaning window table some soap
+  outercleanTable.call(this.garage,'some soap');// cleaning garage table some soap cleaning garage table some soap cleaning garage table some soap
+  outercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap cleaning Johns Table some soap cleaning Johns Table some soap
 ```  
 ----
 C) Arrow functions
-Unlike regular functions, **arrow functions** don't have their own _THIS_ keyword, it uses the **OUTTER SCOPE**'s _THIS_ value. In the next
-example the "innerfunction" takes the "outterfunction"'s _THIS_ which was set with the **CALL** function.
+Unlike regular functions, **arrow functions** don't have their own _THIS_ keyword, it uses the **OUTER SCOPE**'s _THIS_ value. In the next
+example the "innerfunction" takes the "outerfunction"'s _THIS_ which was set with the **CALL** function.
 
 ----
 Example 4.6 Shows how to set _THIS_ using the "arrow functions".
@@ -402,15 +402,15 @@ Example 4.6 Shows how to set _THIS_ using the "arrow functions".
   let johnsRoom={
     table:'Johns Table'
   }
-  const outtercleanTable = function(soap){
+  const outercleanTable = function(soap){
     const innerfunction = (_soap)=>{
           console.log(`cleaning ${this.table} ${_soap}`)
     }    
     innerfunction();
   }
-  outtercleanTable.call(this,'some soap');// cleaning window table some soap
-  outtercleanTable.call(this.garage,'some soap');// cleaning garage table some soap 
-  outtercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap 
+  outercleanTable.call(this,'some soap');// cleaning window table some soap
+  outercleanTable.call(this.garage,'some soap');// cleaning garage table some soap 
+  outercleanTable.call(johnsRoom,'some soap');// cleaning Johns Table some soap 
   
   function multiply(p, q, callback){
     callback(p*q)
@@ -555,7 +555,7 @@ Example 4.10 Shows how to set _THIS_ using the "arrow functions" in ES6 classes.
 ----
 [return to :pushpin:](https://github.com/cnsoto/JavaScript-Notes/blob/290822020/THIS%20keyword.md#now-that-we-know-the-this-object-it-is-important-to-understand-how-it-is-bind-to-the-scope-pushpin)
 # 5. _THIS_ Implicit binding           
-The _THIS_ keyword is not very useful in functions (only in constructor functions), where they really shine is when use with objects. _THIS_ inside a method gets it's value from the inmediate object.
+The _THIS_ keyword is not very useful in functions, where they really shine is when use with objects. _THIS_ inside a method gets it's value from the inmediate object.
 
 ----
 Example 5.1 Shows _THIS_ inside a method
@@ -574,12 +574,29 @@ Example 5.1 Shows _THIS_ inside a method
   console.log(op.B.Reed())
 ```  
 ----
+A function can be assign as an object'method after definition. 
+
+----
+Example 5.2 Show a method added after the object definition
+```
+  const tellLastName = function(){
+    return this.father_lastname +' '+ this.mother_lastname;
+  }
+  let noel = {
+    name:'Carlos Noel',
+    father_lastname:'Soto',
+    mother_lastname:'Calderon'
+  }
+  noel.lastnames = tellLastName;
+  noel.lastnames()// Soto Calderon
+```  
+----
 In the following example, the "Object p" doesn't possess the "method f", when "method f" is call the search starts at "Object p" and after no
 find it the search goes to its "Prototype o". If the "method f" is found in the "object o" chain prototype then _THIS_'s value 
 it will be "Object p" as is the method belongs to the "Object p".
 
 ----
-Example 5.2 Shows _THIS_ inside de Prototype chain (Inheritence)
+Example 5.3 Shows _THIS_ inside de Prototype chain (Inheritence)
 ```
   var o={
     f:function(){return this.a+ this.b}
@@ -593,7 +610,7 @@ Example 5.2 Shows _THIS_ inside de Prototype chain (Inheritence)
 Another use of _THIS_ in object is when a function use as a "GETTER" or "SETTER". The function has its _THIS_ value bind to the "Object" from which the property was stablish.
 
 ----
-Example 5.3 Shows _THIS_ in "GETTER" function
+Example 5.4 Shows _THIS_ in "GETTER" function
 ```
   function modulus(){
     return Math.sqt(this.re*this.re + this.im*this.im)
@@ -612,21 +629,11 @@ Example 5.3 Shows _THIS_ in "GETTER" function
   */
 ```  
 ----
-In this case we see the method invocation pattern. The _THIS_ keyword is really useful when use for object and is good practice to set the strict mode
-on functions which have it in their context.
+A method can lose it context when is assign to a variable, to create a function.
 
 ----
-Example 5.4
+Example 5.5 Show an object's method losing its context
 ```
-  const fn = function() {
-    return this;
-  };
-  const obj1 = { fn }; 
-  const obj2 = { fn }; 
-  obj1.fn() === obj1; // true
-  obj1.fn() === obj2; // false
-  obj2.fn() === obj1; // false
-  obj2.fn() === obj2; // true
   const foo = function(){
     'use strict'
     console.log(this === window)
@@ -644,10 +651,10 @@ Example 5.4
   user.foo1()// false
 ```  
 ----
-Function receives an object as an argument and adds a method
+Using the method invocation pattern we can create a function receives an object as an argument and adds a method.
 
 ----
-Example 5.5
+Example 5.6 Shows a function use to  add a method to an object.
 ```
   const tellName = function(obj){
     obj.talk = function(){
@@ -667,28 +674,11 @@ Example 5.5
   matt.talk()// Matt
   john.talk()// John
 ```  
----
-Function assigns a method after definition
+----
+In the next example 5.6 the function is returning an object and we can notice that the _THIS_ value can only go the immediate outer scope. That's the reason why even if the method is calling a property with the same name the method get the one it has as a property.
 
 ----
-Example 5.6
-```
-  const tellLastName = function(){
-    return this.father_lastname +' '+ this.mother_lastname;
-  }
-  let noel = {
-    name:'Carlos Noel',
-    father_lastname:'Soto',
-    mother_lastname:'Calderon'
-  }
-  noel.lastnames = tellLastName;
-  noel.lastnames()// Soto Calderon
-```  
-----
-Function returning object with _THIS_ in a method
-
-----
-Example 5.7
+Example 5.7 Show a function returning an object which has an inner object.
 ```
   const Person = function(name,age,mother){
     return{
@@ -709,33 +699,11 @@ Example 5.7
   ana.talk()// ana
   ana.mother.talk()// claire
 ```  
-----
-When using _THIS_ inside a method is referring to the object which the method belongs. _THIS_ object can call others methods and properties
-which the objects owns.
-
-----
-Example 5.8
-```
-  const cleanTable = function(){
-    console.log(`cleaning ${this.table}`)
-  }
-  this.table='window table'
-  this.garage={
-    table:'garage table',
-    cleanTable
-  }
-  let johnsRoom={
-    table:'johns Table',
-    cleanTable
-  }
-  johnsRoom.cleanTable()// cleaning johns Table
-  this.garage.cleanTable()// cleaning garage table
-```  
-----
+---
 When _THIS_ is use inside a method's class it refers to the object's instance from which the method was invoke.
 
 ----
-Example 5.9 Shows _THIS_ inside of classes
+Example 5.8 Shows _THIS_ inside of ES6 classes
 ```
   class createRoom{
     constructor(name){
